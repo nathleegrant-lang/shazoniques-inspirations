@@ -22,7 +22,7 @@ export function Logo({
   const dims =
     size === "lg"
       ? { width: 959, height: 573, className: "h-auto w-[min(30rem,78vw)]" }
-      : { width: 959, height: 573, className: "h-auto w-[9.5rem] sm:w-[11rem]" };
+      : { width: 959, height: 573, className: "h-auto w-[7rem] sm:w-[8.25rem]" };
 
   return (
     <Image
