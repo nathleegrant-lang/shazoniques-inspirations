@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ReflectionPlate from "@/components/ReflectionPlate";
-import { Logo } from "@/components/Logo";
-import { AuthorPortrait, BookCard } from "@/components/ui";
+import { BookCard } from "@/components/ui";
 import { authors } from "@/data/authors";
 import { books } from "@/data/books";
-import HeroDawn from "@/components/HeroDawn";
-import { AUTHORS_INTRO, HERO_IMAGE, SITE, collections, projectsIn } from "@/data/site";
+import { SITE, collections, projectsIn } from "@/data/site";
 import { reflectionForDate } from "@/lib/reflections";
 import { pageMetadata } from "@/lib/seo";
 
@@ -18,20 +16,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
 });
 
-/**
- * The house.
- *
- * The homepage is not a page of sections. It is a sequence of rooms, and the
- * visitor walks through them. Each room does one thing, is given real air above
- * and below, and hands the visitor onward through a single quiet door.
- *
- * Light and dark alternate on purpose. The dark rooms are where the mark lives
- * and where one reflection can hold the whole screen; the light rooms are where
- * the reading happens. Nobody is asked to do anything until Room One has
- * finished speaking.
- */
-
-/** A balanced selection — never a one-author carousel. */
 const FEATURED = [
   "breaking-chains",
   "the-kings-the-legacy-begins",
@@ -39,7 +23,6 @@ const FEATURED = [
   "oscar-the-great",
 ];
 
-/** The small capitals that name each room. Structure that encodes something true. */
 function RoomLabel({
   children,
   tone = "light",
@@ -65,117 +48,77 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── The Hero ────────────────────────────────────────────────────────
-          The emotional entrance. The mark, the name, the slogan, one sentence,
-          one door. Nothing else on the screen, and a great deal of air around it.
+      {/* Homepage hero: the header carries the logo, so the centre is reserved
+          for the name and the three-part promise only. */}
+      <section className="relative flex min-h-[30rem] items-center justify-center overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_50%_90%,rgba(178,149,53,0.12),transparent_42%),linear-gradient(180deg,#090909_0%,#0b0a09_58%,#17130c_100%)] px-6 py-24 text-center sm:min-h-[34rem] lg:min-h-[38rem]">
+        <span aria-hidden className="absolute left-[9%] top-[27%] text-5xl text-gold-light/80 blur-[0.5px] sm:text-7xl">✦</span>
+        <span aria-hidden className="absolute right-[17%] top-[20%] text-2xl text-gold-light/65 blur-[1px] sm:text-4xl">✦</span>
+        <span aria-hidden className="absolute right-[11%] bottom-[20%] text-2xl text-gold-light/60 blur-[1px] sm:text-4xl">✦</span>
 
-          Behind it: first light. Not a photograph — a drawn dawn built from the
-          logo's own gold and its own four-point star, so the hero cannot look
-          like anyone else's website. A real photograph can replace it at any time
-          by setting HERO_IMAGE in data/site.ts. */}
-      <section className="relative flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center overflow-hidden bg-night px-6 py-24 text-center">
-        {HERO_IMAGE ? (
-          <>
-            <Image
-              src={HERO_IMAGE}
-              alt=""
-              aria-hidden
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-            {/* The logo must remain the brightest object on the screen. */}
-            <div aria-hidden className="absolute inset-0 bg-night/70" />
-          </>
-        ) : (
-          <HeroDawn />
-        )}
-
-        <div className="relative flex flex-col items-center">
-          <div className="animate-settle">
-            <Logo size="lg" priority />
-          </div>
-
-          <h1
-            className="mt-16 animate-settle font-display text-4xl font-light tracking-wide text-ink-onNight sm:text-5xl"
-            style={{ animationDelay: "220ms" }}
-          >
-            {SITE.name}
+        <div className="relative mx-auto max-w-5xl animate-settle">
+          <h1 className="font-display text-[clamp(2.6rem,6vw,5.3rem)] font-light tracking-[0.14em] text-ink-onNight sm:tracking-[0.18em]">
+            Shazonique&rsquo;s Inspirations
           </h1>
-
-          <p
-            className="mt-6 animate-settle font-display text-hero font-light italic text-gold-soft"
-            style={{ animationDelay: "380ms" }}
-          >
-            {SITE.slogan}
+          <p className="mx-auto mt-7 max-w-4xl font-body text-[clamp(1rem,1.8vw,1.45rem)] font-light text-gold-soft">
+            Books that inspire. Reflections that restore. Truth that transforms.
           </p>
+        </div>
+      </section>
 
-          <p
-            className="mt-12 max-w-2xl animate-settle font-body text-lead font-light leading-relaxed text-ink-onNightSoft"
-            style={{ animationDelay: "560ms" }}
-          >
-            Where books inspire, reflections encourage, ideas flourish, and hope
-            finds a home.
-          </p>
+      {/* Founding authors — equal scale, real supplied portraits, one shared mission. */}
+      <section className="border-b border-white/10 bg-[linear-gradient(180deg,#111111_0%,#0b0a09_100%)] px-6 py-16 text-ink-onNight sm:px-10 lg:py-20">
+        <div className="mx-auto grid max-w-[88rem] items-center gap-12 lg:grid-cols-[minmax(14rem,1fr)_minmax(24rem,1.5fr)_minmax(14rem,1fr)] lg:gap-10">
+          {authors.map((author, index) => (
+            <article
+              key={author.slug}
+              className={`${index === 1 ? "lg:col-start-3" : "lg:col-start-1"} flex flex-col items-center text-center ${index === 1 ? "lg:row-start-1" : ""}`}
+            >
+              <Link href={`/authors/${author.slug}`} className="group">
+                <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border border-gold/80 bg-night shadow-[0_0_0_6px_rgba(178,149,53,0.05)] sm:h-52 sm:w-52">
+                  <Image
+                    src={author.portrait ?? ""}
+                    alt={`Portrait of ${author.name}`}
+                    fill
+                    sizes="208px"
+                    className="object-cover transition-transform duration-700 ease-calm group-hover:scale-[1.03]"
+                  />
+                </div>
+                <h2 className="mt-6 font-display text-3xl font-light text-gold-soft transition-colors duration-500 group-hover:text-gold-light">
+                  {author.name}
+                </h2>
+                <p className="mt-3 font-body text-xs uppercase tracking-wide text-ink-onNightSoft">
+                  Author
+                </p>
+                <div className="mx-auto mt-4 h-px w-16 bg-gold/70" />
+              </Link>
+            </article>
+          ))}
 
-          <div className="mt-14 animate-settle" style={{ animationDelay: "740ms" }}>
-            <Link href="/reflections" className="btn-gold-on-night">
-              Read today&rsquo;s reflection
+          <div className="text-center lg:col-start-2 lg:row-start-1">
+            <div className="flex items-center justify-center gap-4 text-gold-soft">
+              <span className="h-px w-20 bg-gold/60" />
+              <p className="font-body text-xs uppercase tracking-[0.22em]">Our Founding Authors</p>
+              <span className="h-px w-20 bg-gold/60" />
+            </div>
+            <h2 className="mt-7 font-display text-[clamp(2.2rem,4vw,3.5rem)] font-light">
+              Two Writers. One Mission.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl font-body text-base font-light leading-relaxed text-ink-onNightSoft sm:text-lg">
+              We write to inspire hearts, strengthen families, and illuminate the path of faith, purpose, and transformation.
+            </p>
+            <Link href="/authors" className="btn-gold-on-night mt-9">
+              Meet the authors
             </Link>
           </div>
         </div>
-
-        {/* A quiet invitation downward. It breathes, slowly, and does nothing else. */}
-        <div
-          aria-hidden
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-breathe"
-        >
-          <div className="h-14 w-px bg-gradient-to-b from-transparent to-gold/50" />
-        </div>
       </section>
 
-      {/* ── Room One — Who we are ──────────────────────────────────────────── */}
-      <section className="room bg-cream-shell">
-        <div className="room-inner">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <RoomLabel>Room One</RoomLabel>
-            <h1 className="mt-8 font-display text-room font-light">
-              A place to breathe
-            </h1>
-            <div className="mx-auto mt-10 rule" />
-            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
-              Shazonique&rsquo;s Inspirations was founded by two Jamaican authors,{" "}
-              <Link href="/authors/nathlee-r-grant" className="link-underline">
-                Nathlee R. Grant
-              </Link>{" "}
-              and{" "}
-              <Link href="/authors/zowayne-o-williams" className="link-underline">
-                Zowayne O. Williams
-              </Link>
-              . It exists because words can heal, stories can restore, and truth can
-              set people free.
-            </p>
-            <p className="mx-auto mt-6 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
-              Books, reflections, family devotions, education, civic thought. One
-              house, many rooms. Stay as long as you like.
-            </p>
-            <div className="mt-12">
-              <Link href="/about" className="btn-gold">
-                Our purpose
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── Room Two — Today's Reflection ───────────────────────────────────
-          A dark room. One reflection, held. This is the heart of the house, so
-          it is given more air than anything else in it. */}
+      {/* Today’s reflection remains part of the homepage, beneath the approved
+          opening composition. */}
       <section className="room bg-night">
         <div className="room-inner">
           <Reveal className="text-center">
-            <RoomLabel tone="dark">Room Two · Today</RoomLabel>
+            <RoomLabel tone="dark">Today&rsquo;s Reflection</RoomLabel>
           </Reveal>
 
           <Reveal
@@ -206,54 +149,11 @@ export default function HomePage() {
                   href="/reflections"
                   className="inline-flex items-center px-2 py-4 font-body text-xs uppercase tracking-wide text-charcoal-faint transition-colors duration-500 ease-calm hover:text-gold-soft"
                 >
-                  All 120
+                  Reflection library
                 </Link>
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ── Room Three — Meet the Authors ───────────────────────────────────
-          Two columns, identical in every dimension: same width, same portrait
-          size, same weight of type. Equality here is structural, not a promise. */}
-      <section className="room bg-cream">
-        <div className="room-inner">
-          <Reveal className="text-center">
-            <RoomLabel>Room Three</RoomLabel>
-            <h2 className="mt-8 font-display text-room font-light">
-              Meet the authors
-            </h2>
-            <div className="mx-auto mt-10 rule" />
-            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
-              {AUTHORS_INTRO}
-            </p>
-          </Reveal>
-
-          <div className="mt-20 grid gap-16 md:grid-cols-2">
-            {authors.map((author, i) => (
-              <Reveal key={author.slug} delay={i * 140} as="article">
-                <Link
-                  href={`/authors/${author.slug}`}
-                  className="group flex flex-col items-center text-center"
-                >
-                  <div className="w-56">
-                    <AuthorPortrait author={author} />
-                  </div>
-                  <h3 className="mt-10 font-display text-3xl font-light transition-colors duration-500 ease-calm group-hover:text-gold-deep">
-                    {author.name}
-                  </h3>
-                  <p className="lockup mt-4 text-gold-deep/80">{author.title}</p>
-                  <p className="mt-3 font-display text-base italic text-ink-faint">
-                    {author.role}
-                  </p>
-                  <p className="mt-8 max-w-sm font-body text-base font-light leading-relaxed text-ink-soft">
-                    {author.biography[0]}
-                  </p>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
