@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* The approved brand tokens live in tailwind.config.ts. @config keeps that file
+   authoritative — Tailwind v4's pipeline, v2.0's palette. */
+@config "../tailwind.config.ts";
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body;
+    font-weight: 400;
+  }
+
+  /* Display type is set light and large. At these sizes a light weight reads as
+     elegance; at small sizes it would read as weakness — so it is never used small. */
+  h1, h2, h3 {
+    @apply font-display text-charcoal;
+    font-weight: 300;
+    text-wrap: balance;
+  }
+
+  /* Accessibility floor. Visible, calm, never removed. */
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--color-gold-light);
+    color: var(--color-night);
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply absolute left-6 -top-24 z-50 bg-night px-5 py-3 text-cream
+           font-body text-sm tracking-wide transition-all focus:top-6;
+  }
+
+  /* A room is a full-width band with real air above and below. */
+  .room {
+    @apply px-6 sm:px-10;
+    padding-top: theme(spacing.room);
+    padding-bottom: theme(spacing.room);
+  }
+
+  .room-inner {
+    @apply mx-auto w-full max-w-room;
+  }
+
+  /* Small capitals, tracked wide — the logo's own typographic voice. */
+  .lockup {
+    @apply font-body text-[0.6875rem] uppercase tracking-lockup;
+  }
+
+  .rule {
+    @apply h-px w-16 bg-gold/40;
+  }
+
+  /* Buttons are quiet. One per room, at most. */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-3 border border-gold/50
+           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
+           text-gold-deep transition-all duration-500 ease-calm
+           hover:border-gold hover:bg-gold/5;
+  }
+
+  .btn-gold-on-night {
+    @apply inline-flex items-center justify-center gap-3 border border-gold/40
+           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
+           text-gold-soft transition-all duration-500 ease-calm
+           hover:border-gold-soft hover:bg-gold-soft/10;
+  }
+
+  .link-quiet {
+    @apply transition-colors duration-500 ease-calm hover:text-gold-deep;
+  }
+
+  .link-underline {
+    @apply underline decoration-gold/40 underline-offset-[6px] decoration-1
+           transition-colors duration-500 ease-calm hover:decoration-gold;
+  }
+
+  /* Reading measure for long prose. */
+  .prose-quiet {
+    @apply max-w-prose font-body text-lead font-light text-ink-soft;
+  }
+}
+
+/* Scroll reveal. The motion is almost imperceptible by design: a slow settle,
+   never a slide, never a bounce.
+
+   The hidden state is scoped to `html.js`, which is set by an inline script in
+   the layout before first paint. With JavaScript disabled the rule never
+   applies, so every section is simply visible — the reveal is an enhancement,
+   never a gate on reading. */
+@layer utilities {
+  .reveal {
+    transition:
+      opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  html.js .reveal:not(.reveal-in) {
+    opacity: 0;
+    transform: translateY(16px);
+    will-change: opacity, transform;
+  }
+}
+
+/* Respect the visitor. If they have asked the system for less motion, they get none. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html.js .reveal:not(.reveal-in) {
+    opacity: 1;
+    transform: none;
+  }
+}
