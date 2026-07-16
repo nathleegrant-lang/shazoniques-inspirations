@@ -57,7 +57,6 @@ const NAV: NavItem[] = [
       { href: "/education", label: "Education" },
       { href: "/ideas", label: "Ideas & Essays" },
       { href: "/arts-media", label: "Arts & Media" },
-      { href: "/community", label: "Community" },
     ],
   },
   { href: "/about", label: "About" },
@@ -111,13 +110,13 @@ export default function Header() {
   }, [openDrop]);
 
   return (
-    <header className="sticky top-0 z-50 bg-night/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-20 max-w-room items-center justify-between px-6 sm:px-10">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-night/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-24 max-w-[92rem] items-center gap-8 px-6 sm:px-8 lg:px-10">
         <LogoLink />
 
         {/* Desktop */}
-        <nav ref={navRef} aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+        <nav ref={navRef} aria-label="Main" className="ml-auto hidden lg:block">
+          <ul className="flex items-center gap-9">
             {NAV.map((item) => {
               const active = isActive(item);
 
@@ -188,6 +187,13 @@ export default function Header() {
           </ul>
         </nav>
 
+        <Link
+          href="/community"
+          className="hidden items-center rounded-full border border-gold px-6 py-3 font-body text-[0.7rem] uppercase tracking-wide text-gold-soft transition-colors duration-500 ease-calm hover:bg-gold hover:text-night lg:inline-flex"
+        >
+          Community
+        </Link>
+
         <button
           type="button"
           onClick={() => setMenuOpen((v) => !v)}
@@ -240,6 +246,14 @@ export default function Header() {
                 )}
               </li>
             ))}
+            <li className="py-5">
+              <Link
+                href="/community"
+                className="block font-display text-2xl font-light text-gold-soft transition-colors duration-500 ease-calm hover:text-gold-light"
+              >
+                Community
+              </Link>
+            </li>
           </ul>
         </nav>
       )}
