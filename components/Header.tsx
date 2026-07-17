@@ -212,9 +212,9 @@ export default function Header() {
         <nav
           id="mobile-nav"
           aria-label="Main"
-          className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-white/5 bg-night lg:hidden"
+          className="max-h-[calc(100svh-6rem)] overflow-y-auto border-t border-white/5 bg-night lg:hidden"
         >
-          <ul className="mx-auto max-w-room px-6 py-6 sm:px-10">
+          <ul className="mx-auto max-w-site px-6 py-6 sm:px-10">
             {NAV.map((item) => (
               <li key={item.label} className="border-b border-white/5 py-5">
                 {item.children ? (

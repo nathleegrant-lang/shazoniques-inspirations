@@ -34,7 +34,7 @@ export default function AuthorsPage() {
       />
 
       <section className="bg-cream px-6 py-24 sm:px-10" aria-label="The authors">
-        <div className="mx-auto grid max-w-room gap-20 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid max-w-site gap-20 lg:grid-cols-2 lg:gap-16">
           {authors.map((author) => {
             const list = booksByAuthor(author.slug);
             return (

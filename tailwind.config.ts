@@ -94,12 +94,19 @@ const config: Config = {
 
       maxWidth: {
         prose: "62ch",
-        room: "78rem",
+        // Renamed from `room` to `site`. `spacing.room` (the vertical rhythm token)
+        // and this key both compiled to `max-w-room`, and the spacing value won —
+        // capping every `max-w-room` container at 11rem instead of 78rem. Distinct
+        // names keep the utility unambiguous. See docs/maxwidth-room-investigation.md.
+        site: "78rem",
         reflection: "44rem",
       },
 
       spacing: {
-        room: "clamp(6rem, 14vh, 11rem)", // vertical air between rooms
+        // Named `room-y` (not `room`) on purpose: a bare `room` key here also feeds
+        // the max-width scale, regenerating a phantom `max-w-room`. The `-y` suffix
+        // reflects that this is vertical rhythm and keeps the namespaces disjoint.
+        "room-y": "clamp(6rem, 14vh, 11rem)", // vertical air between rooms
       },
 
       borderRadius: { card: "2px" }, // almost none — museum, not app

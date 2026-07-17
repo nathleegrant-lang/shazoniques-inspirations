@@ -45,12 +45,12 @@
   /* A room is a full-width band with real air above and below. */
   .room {
     @apply px-6 sm:px-10;
-    padding-top: theme(spacing.room);
-    padding-bottom: theme(spacing.room);
+    padding-top: theme(spacing.room-y);
+    padding-bottom: theme(spacing.room-y);
   }
 
   .room-inner {
-    @apply mx-auto w-full max-w-room;
+    @apply mx-auto w-full max-w-site;
   }
 
   /* Small capitals, tracked wide — the logo's own typographic voice. */

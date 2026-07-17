@@ -27,7 +27,7 @@ export default function BooksPage() {
           className="border-t border-gold/15 bg-cream px-6 py-20 sm:px-10 sm:py-24"
           aria-labelledby="shared-books-heading"
         >
-          <div className="mx-auto max-w-room">
+          <div className="mx-auto max-w-site">
             <div className="mx-auto max-w-2xl text-center">
               <p className="lockup text-gold-deep/80">Written together</p>
 
@@ -75,7 +75,7 @@ export default function BooksPage() {
               index % 2 === 0 ? "bg-cream-shell" : "bg-cream"
             }`}
           >
-            <div className="mx-auto max-w-room">
+            <div className="mx-auto max-w-site">
               <div className="grid items-end gap-10 border-b border-gold/20 pb-10 md:grid-cols-[minmax(0,1fr)_auto]">
                 <div className="min-w-0">
                   <p className="lockup text-gold-deep/80">

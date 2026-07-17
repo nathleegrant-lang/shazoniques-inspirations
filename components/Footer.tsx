@@ -25,7 +25,7 @@ const EXPLORE = [
 export default function Footer() {
   return (
     <footer className="bg-night text-ink-onNightSoft">
-      <div className="mx-auto max-w-room px-6 py-24 sm:px-10">
+      <div className="mx-auto max-w-site px-6 py-24 sm:px-10">
         {/* The mark, once more, with room around it. */}
         <div className="flex flex-col items-center text-center">
           <Logo size="sm" />

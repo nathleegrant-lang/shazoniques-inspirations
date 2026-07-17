@@ -254,7 +254,7 @@ export default async function BookPage({ params }: Props) {
           className="bg-cream-shell px-6 py-24 sm:px-10"
           aria-labelledby="also-read"
         >
-          <div className="mx-auto max-w-room">
+          <div className="mx-auto max-w-site">
             <div className="text-center">
               <p className="lockup text-gold-deep/80">Related books</p>
               <h2

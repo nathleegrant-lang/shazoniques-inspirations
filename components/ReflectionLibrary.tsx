@@ -77,7 +77,7 @@ export default function ReflectionLibrary({
               value={query}
               onChange={onChange(setQuery)}
               placeholder="grace, chains, prayer…"
-              className="w-full rounded-card border border-ink/15 bg-cream px-3 py-2 font-body text-sm text-ink placeholder:text-ink-faint/70 focus:border-ink"
+              className="w-full rounded-card border border-ink/15 bg-cream px-3.5 py-2.5 font-body text-base text-ink placeholder:text-ink-faint/70 focus:border-ink sm:text-sm"
             />
           </div>
 
@@ -90,7 +90,7 @@ export default function ReflectionLibrary({
                 id={s.id}
                 value={s.value}
                 onChange={onChange(s.set)}
-                className="w-full rounded-card border border-ink/15 bg-cream px-3 py-2 font-body text-sm text-ink focus:border-ink"
+                className="w-full rounded-card border border-ink/15 bg-cream px-3.5 py-2.5 font-body text-base text-ink focus:border-ink sm:text-sm"
               >
                 <option value="">All</option>
                 {s.options.map((o) => (
