@@ -34,24 +34,32 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden border-b border-[#2f2719] bg-[#080808] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_42%,rgba(191,145,42,0.12),transparent_34%),linear-gradient(180deg,#050505_0%,#0b0b0b_62%,#120f0a_100%)]" />
+      <section className="relative isolate overflow-hidden bg-[#0a0a08] text-white">
+        {/* The header remains black. The hero begins with a muted lily-green glow. */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#4b4517_0%,#24220f_14%,#0a0a08_46%,#0a0a08_76%,#f5f1e8_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(182,171,62,0.24),transparent_34%)]" />
 
-        <div className="relative mx-auto grid min-h-[44rem] max-w-[96rem] items-center gap-10 px-6 py-16 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:px-14 lg:py-20">
+        <div className="relative mx-auto grid min-h-[46rem] max-w-[96rem] items-center gap-8 px-6 pb-28 pt-16 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-14 lg:pb-36 lg:pt-20">
           <Reveal className="relative z-20 max-w-3xl">
-            <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[#d8b44f]">
-              Books that inspire. Reflections that restore.
+            <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[#dfbd54]">
+              Independent Christian Publishing
             </p>
 
-            <h1 className="mt-6 font-display text-[clamp(3.7rem,7vw,7.2rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-white">
-              Truth that{" "}
-              <span className="italic text-[#d5a83e]">transforms.</span>
-              <br />
-              Stories that{" "}
-              <span className="italic text-[#d5a83e]">inspire.</span>
+            <h1 className="mt-6 font-display text-[clamp(3.8rem,7vw,7.3rem)] font-bold leading-[0.94] tracking-[-0.04em] text-white">
+              Shazonique&apos;s Inspiration
             </h1>
 
-            <p className="mt-8 max-w-2xl font-body text-lg font-medium leading-relaxed text-white/82">
+            <p className="mt-7 max-w-2xl font-display text-[clamp(1.45rem,2.2vw,2.3rem)] font-medium leading-snug text-white/92">
+              Books that inspire. Reflections that restore. Truth that transforms.
+            </p>
+
+            <div className="mt-7 flex items-center gap-4 text-[#d4aa37]" aria-hidden="true">
+              <span className="h-px w-24 bg-[#b88f23]" />
+              <span className="text-lg">♥</span>
+              <span className="h-px w-24 bg-[#b88f23]" />
+            </div>
+
+            <p className="mt-7 max-w-2xl font-body text-lg font-medium leading-relaxed text-white/82">
               Faith-filled books, reflections, and resources created to encourage
               hearts, strengthen families, and inspire lives of purpose.
             </p>
@@ -59,50 +67,52 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/books"
-                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-[#d7ad42] px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#ebc75f]"
+                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-[#d7ad42] px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#edc95e]"
               >
                 Explore our books
               </Link>
 
               <Link
                 href={`/reflections/${today.id}`}
-                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-transparent px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-black/20 px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/5"
               >
                 Today&apos;s reflection
               </Link>
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="relative min-h-[26rem] lg:min-h-[38rem]">
-            <div className="absolute inset-y-0 -left-24 right-[-8vw]">
+          <Reveal delay={120} className="relative min-h-[27rem] lg:min-h-[40rem]">
+            <div className="absolute inset-y-0 -left-20 right-[-7vw]">
               <Image
                 src="/images/home/shazonique-hero-lilies-books-cup.png"
                 alt="Lilies, a cup, books, and warm light"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 58vw"
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center"
               />
 
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,#080808_0%,rgba(8,8,8,0.98)_8%,rgba(8,8,8,0.72)_24%,rgba(8,8,8,0.18)_48%,rgba(8,8,8,0)_72%)]" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0)_55%,#120f0a_100%)]" />
+              {/* Blend the picture into the hero instead of showing it as a separate card. */}
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,#0a0a08_0%,rgba(10,10,8,0.98)_9%,rgba(10,10,8,0.70)_27%,rgba(10,10,8,0.18)_50%,rgba(10,10,8,0)_75%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(71,66,21,0.12)_0%,rgba(10,10,8,0)_52%,#f5f1e8_100%)]" />
             </div>
           </Reveal>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#120f0a]" />
+        {/* Soft transition into the Featured Books section. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#e8e0d2]/70 to-[#f5f1e8]" />
       </section>
 
       {/* FEATURED BOOKS */}
-      <section className="bg-white px-6 py-20 sm:px-10 lg:py-28">
+      <section className="bg-[#f5f1e8] px-6 pb-20 pt-8 sm:px-10 lg:pb-28 lg:pt-10">
         <div className="mx-auto max-w-[92rem]">
-          <Reveal className="flex flex-col gap-6 border-b border-black/15 pb-10 md:flex-row md:items-end md:justify-between">
+          <Reveal className="flex flex-col gap-6 pb-10 text-center md:flex-row md:items-end md:justify-between md:text-left">
             <div>
               <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-[#9b7a25]">
-                Featured titles
-              </p>
-              <h2 className="mt-4 font-display text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-none text-[#111111]">
                 Begin your reading journey
+              </p>
+              <h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-none text-[#111111]">
+                Featured Books
               </h2>
             </div>
 
@@ -114,7 +124,7 @@ export default function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-x-7 gap-y-14 md:grid-cols-4 lg:gap-x-10">
+          <div className="mt-8 grid grid-cols-2 gap-x-7 gap-y-14 md:grid-cols-4 lg:gap-x-10">
             {featuredBooks.map((book, index) => (
               <Reveal key={book.slug} delay={index * 80}>
                 <BookCard book={book} />
