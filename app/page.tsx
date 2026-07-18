@@ -34,22 +34,24 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-black/10 bg-white">
-        <div className="mx-auto grid min-h-[42rem] max-w-[92rem] items-center gap-14 px-6 py-20 sm:px-10 lg:grid-cols-[1.02fr_0.98fr] lg:px-14 lg:py-24">
-          <Reveal>
-            <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[#9b7a25]">
-              Independent Christian Publishing
+      <section className="relative isolate overflow-hidden border-b border-[#2f2719] bg-[#080808] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_42%,rgba(191,145,42,0.12),transparent_34%),linear-gradient(180deg,#050505_0%,#0b0b0b_62%,#120f0a_100%)]" />
+
+        <div className="relative mx-auto grid min-h-[44rem] max-w-[96rem] items-center gap-10 px-6 py-16 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:px-14 lg:py-20">
+          <Reveal className="relative z-20 max-w-3xl">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[#d8b44f]">
+              Books that inspire. Reflections that restore.
             </p>
 
-            <h1 className="mt-6 max-w-4xl font-display text-[clamp(3.5rem,7vw,7rem)] font-semibold leading-[0.94] tracking-[-0.035em] text-[#111111]">
-              Shazonique&apos;s Inspiration
+            <h1 className="mt-6 font-display text-[clamp(3.7rem,7vw,7.2rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-white">
+              Truth that{" "}
+              <span className="italic text-[#d5a83e]">transforms.</span>
+              <br />
+              Stories that{" "}
+              <span className="italic text-[#d5a83e]">inspire.</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl font-display text-[clamp(1.8rem,3vw,3rem)] font-semibold leading-tight text-[#1b1b1b]">
-              Books that inspire. Reflections that restore. Truth that transforms.
-            </p>
-
-            <p className="mt-7 max-w-2xl font-body text-lg font-medium leading-relaxed text-[#363636]">
+            <p className="mt-8 max-w-2xl font-body text-lg font-medium leading-relaxed text-white/82">
               Faith-filled books, reflections, and resources created to encourage
               hearts, strengthen families, and inspire lives of purpose.
             </p>
@@ -57,33 +59,38 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/books"
-                className="inline-flex items-center justify-center rounded-md border border-black bg-black px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-[#242424]"
+                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-[#d7ad42] px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-black transition hover:bg-[#ebc75f]"
               >
                 Explore our books
               </Link>
 
               <Link
                 href={`/reflections/${today.id}`}
-                className="inline-flex items-center justify-center rounded-md border border-[#b9953f] bg-white px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-[#7a5b16] transition hover:bg-[#f6f2e8]"
+                className="inline-flex items-center justify-center rounded-md border border-[#d7ad42] bg-transparent px-7 py-4 font-body text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/5"
               >
                 Today&apos;s reflection
               </Link>
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-black/10 bg-[#f4f4f4] shadow-[0_24px_60px_rgba(0,0,0,0.16)]">
+          <Reveal delay={120} className="relative min-h-[26rem] lg:min-h-[38rem]">
+            <div className="absolute inset-y-0 -left-24 right-[-8vw]">
               <Image
                 src="/images/home/shazonique-hero-lilies-books-cup.png"
                 alt="Lilies, a cup, books, and warm light"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 48vw"
-                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover object-center"
               />
+
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,#080808_0%,rgba(8,8,8,0.98)_8%,rgba(8,8,8,0.72)_24%,rgba(8,8,8,0.18)_48%,rgba(8,8,8,0)_72%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0)_55%,#120f0a_100%)]" />
             </div>
           </Reveal>
         </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#120f0a]" />
       </section>
 
       {/* FEATURED BOOKS */}
