@@ -61,7 +61,27 @@ export default function HomePage() {
               {featured.slice(0, 4).map((book, index) => (
                 <Link key={book.slug} href={`/books/${book.slug}`} className={`group relative block ${index === 1 || index === 2 ? "translate-y-8" : ""}`}>
                   <div className="relative aspect-[2/3] overflow-hidden bg-[#ddd4c3] shadow-[0_20px_45px_rgba(35,29,20,0.18)] transition duration-500 group-hover:-translate-y-2">
-                    <Image src={book.cover} alt={`Cover of ${book.title}`} fill priority={index < 2} sizes="(max-width: 1024px) 42vw, 230px" className="object-cover" />
+                    {book.cover ? (
+                      <Image
+                        src={book.cover}
+                        alt={`Cover of ${book.title}`}
+                        fill
+                        priority={index < 2}
+                        sizes="(max-width: 1024px) 42vw, 230px"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center p-6 text-center">
+                        <div>
+                          <p className="font-body text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6d22]">
+                            Cover coming
+                          </p>
+                          <p className="mt-5 font-display text-2xl leading-snug text-[#171512]">
+                            {book.title}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </Link>
               ))}
