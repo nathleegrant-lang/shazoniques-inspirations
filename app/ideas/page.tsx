@@ -33,13 +33,13 @@ export default function IdeasPage() {
 
       <section className="shell py-16">
         <div className="max-w-prose">
-          <p className="font-body text-lg leading-relaxed text-ink-soft">
+          <p className="font-body text-lg leading-relaxed text-ink-onNightSoft">
             This section is being built. It will hold the essays, columns and
             civic writing that sit behind the fiction — the arguments about how a
             society orders itself, who it protects, and what it owes the people
             inside it.
           </p>
-          <p className="mt-5 font-body text-lg leading-relaxed text-ink-soft">
+          <p className="mt-5 font-body text-lg leading-relaxed text-ink-onNightSoft">
             Until then, those ideas are already at work in the books. Oscar the
             Great is an allegory of a parliament that decided wisdom entitled it to
             rule.
@@ -60,7 +60,7 @@ export default function IdeasPage() {
                   {b.themes.map((t) => (
                     <li
                       key={t}
-                      className="rounded-full border border-ink/10 px-3 py-1 font-body text-xs text-ink-faint"
+                      className="rounded-full border border-charcoal-line px-3 py-1 font-body text-xs text-charcoal-faint"
                     >
                       {t}
                     </li>

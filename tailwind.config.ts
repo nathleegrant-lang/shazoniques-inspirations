@@ -23,48 +23,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* Dark rooms */
+        /* ── The dark, which is now the house ──────────────────────────────
+           Sampled from the brand reference: rich, near-pure, NEUTRAL black and
+           a true neutral charcoal for panels. No warmth, no brown. This is the
+           gravity of a publishing house that has served readers for fifty years. */
         night: {
-          DEFAULT: "#0B0A09", // warm black — the hero, the header, the footer
-          soft: "#141310",
-          raised: "#1E1C18",
+          DEFAULT: "#0A0A0A", // rich black — the page itself
+          soft: "#141414",    // a breath above black
+          raised: "#1C1C1C",  // a panel lifted off the page
         },
         charcoal: {
-          DEFAULT: "#23211D",
-          soft: "#39352E",
-          faint: "#918A7C",   // 5.0:1 on warm black — same reason
+          DEFAULT: "#2A2A2A", // the content panel, as in the reference cards
+          soft: "#333333",    // a hairline lift within a panel
+          line: "#3A3A3A",    // borders on dark
+          faint: "#8C8C8C",   // small captions on dark — 4.9:1 on #0A0A0A
         },
 
-        /* Light rooms */
+        /* ── The reading surface ───────────────────────────────────────────
+           A COOL ivory for long-form reading only (reflection text, book prose).
+           De-yellowed on purpose — this is paper under gallery light, not linen. */
         cream: {
-          DEFAULT: "#FAF5EA",
-          deep: "#F1E9D8",
-          shell: "#FDFBF7", // soft white
+          DEFAULT: "#F4F2EC", // cool ivory — neutral, not beige
+          deep: "#E9E6DD",
+          shell: "#FBFAF6",   // near-white
         },
 
-        /* The thread */
+        /* ── The one accent: gold ──────────────────────────────────────────
+           The logo's gold. On black it can be bright; on ivory it must be dark
+           enough to read. Both are drawn from the same metal. */
         gold: {
-          deep: "#8A6D22", // text-safe on cream (~5:1)
+          deep: "#8A6D22", // AA on ivory (~5:1) — for gold text on light
           DEFAULT: "#B29535",
-          soft: "#E2C254",
-          light: "#F6EABA",
+          soft: "#D9BC5E", // the bright headline gold from the reference
+          light: "#F0DFA6",
         },
 
-        /* Reading ink */
+        /* ── Type ──────────────────────────────────────────────────────────*/
         ink: {
-          DEFAULT: "#23211D",
-          soft: "#57524A",
-          faint: "#736C5E",   // 4.6:1 on cream — captions are small, so they must clear AA
-          onNight: "#E9E4DA",
-          onNightSoft: "#A8A196",
+          DEFAULT: "#1E1E1E", // near-black reading ink on ivory
+          soft: "#4A4A4A",
+          faint: "#6B6B6B",   // 4.6:1 on ivory
+          onNight: "#EDEBE6",     // primary text on black (white, warmed a hair)
+          onNightSoft: "#B0AFAB", // secondary text on black — 7:1 on #0A0A0A
         },
 
-        /* Subtle earth — collection personalities. Never site chrome. */
-        clay: "#9A6455", // Breaking Chains — warm, healing, gentle
-        moss: "#35543F", // Rooted — earth, nature, kingdom
-        midnight: "#1B2447", // Waiting for the Bridegroom — midnight, light, expectation
-        morning: "#B5813F", // Faith Finds Home — warm morning, ordinary beauty
-        slate: "#3A3733", // Bits & Bites — elegant, minimal, quiet wisdom
+        /* ── Collection tone ───────────────────────────────────────────────
+           The pastel per-collection accents (clay, morning, moss, midnight,
+           slate) are RETIRED. One house, one identity: gold on charcoal. A
+           collection now shows its character through words, not a colour swatch.
+           These aliases remain, all pointing at gold, so any lingering reference
+           resolves to the house accent instead of a broken class. */
+        collection: {
+          DEFAULT: "#B29535",
+        },
       },
 
       fontFamily: {

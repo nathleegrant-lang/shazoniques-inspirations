@@ -86,8 +86,8 @@ export default function HomePage() {
                 <h2 className="mt-6 font-display text-3xl font-light text-gold-soft transition-colors duration-500 group-hover:text-gold-light">
                   {author.name}
                 </h2>
-                <p className="mt-3 font-body text-xs uppercase tracking-wide text-ink-onNightSoft">
-                  Author
+                <p className="mt-3 font-body text-xs uppercase tracking-wide text-gold-soft/90">
+                  Founding Author
                 </p>
                 <div className="mx-auto mt-4 h-px w-16 bg-gold/70" />
               </Link>
@@ -137,7 +137,7 @@ export default function HomePage() {
               <p className="mt-10 font-body text-sm font-light tracking-wide text-ink-onNightSoft">
                 {today.author}
               </p>
-              <p className="mt-1 font-display text-base italic text-charcoal-faint">
+              <p className="mt-1 font-display text-base italic text-ink-onNight-faint">
                 {today.book}
               </p>
 
@@ -147,7 +147,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/reflections"
-                  className="inline-flex items-center px-2 py-4 font-body text-xs uppercase tracking-wide text-charcoal-faint transition-colors duration-500 ease-calm hover:text-gold-soft"
+                  className="inline-flex items-center px-2 py-4 font-body text-xs uppercase tracking-wide text-ink-onNight-faint transition-colors duration-500 ease-calm hover:text-gold-soft"
                 >
                   Reflection library
                 </Link>
@@ -158,13 +158,13 @@ export default function HomePage() {
       </section>
 
       {/* ── Room Four — Books ───────────────────────────────────────────────── */}
-      <section className="room bg-cream-shell">
+      <section className="room bg-night-soft">
         <div className="room-inner">
           <Reveal className="text-center">
             <RoomLabel>Room Four</RoomLabel>
             <h2 className="mt-8 font-display text-room font-light">The books</h2>
             <div className="mx-auto mt-10 rule" />
-            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light text-ink-soft">
+            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light text-ink-onNightSoft">
               Fiction, faith, family, and the shape of a just society — from both
               authors, and once, from both together.
             </p>
@@ -209,13 +209,13 @@ export default function HomePage() {
       </section>
 
       {/* ── Room Six — Education ────────────────────────────────────────────── */}
-      <section className="room bg-cream">
+      <section className="room bg-night-soft">
         <div className="room-inner">
           <Reveal className="text-center">
             <RoomLabel>Room Six</RoomLabel>
             <h2 className="mt-8 font-display text-room font-light">Education</h2>
             <div className="mx-auto mt-10 rule" />
-            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light text-ink-soft">
+            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light text-ink-onNightSoft">
               Free study platforms and teaching resources for Jamaican students and
               the people who teach them.
             </p>
@@ -224,11 +224,11 @@ export default function HomePage() {
           <div className="mt-20 grid gap-10 sm:grid-cols-3">
             {education.map((project, i) => (
               <Reveal key={project.id} delay={i * 100} as="article">
-                <div className="h-full border border-ink/10 bg-cream-shell p-10 text-center transition-colors duration-700 ease-calm hover:border-gold/40">
+                <div className="h-full border border-charcoal-line bg-night p-10 text-center transition-colors duration-700 ease-calm hover:border-gold/40">
                   <h3 className="font-display text-2xl font-light">
                     {project.title}
                   </h3>
-                  <p className="mt-5 font-body text-sm font-light leading-relaxed text-ink-soft">
+                  <p className="mt-5 font-body text-sm font-light leading-relaxed text-ink-onNightSoft">
                     {project.summary}
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Room Seven — Ideas ──────────────────────────────────────────────── */}
-      <section className="room bg-cream-shell">
+      <section className="room bg-night">
         <div className="room-inner">
           <Reveal className="mx-auto max-w-3xl text-center">
             <RoomLabel>Room Seven</RoomLabel>
@@ -253,7 +253,7 @@ export default function HomePage() {
               Ideas &amp; essays
             </h2>
             <div className="mx-auto mt-10 rule" />
-            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
+            <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-onNightSoft">
               Civic thought, faith, and the questions that do not resolve in a
               paragraph. A room still being furnished.
             </p>
@@ -263,7 +263,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/arts-media"
-                className="inline-flex items-center px-2 py-4 font-body text-xs uppercase tracking-wide text-ink-faint transition-colors duration-500 ease-calm hover:text-gold-deep"
+                className="inline-flex items-center px-2 py-4 font-body text-xs uppercase tracking-wide text-charcoal-faint transition-colors duration-500 ease-calm hover:text-gold-deep"
               >
                 Arts &amp; Media
               </Link>
@@ -273,14 +273,14 @@ export default function HomePage() {
       </section>
 
       {/* ── Room Eight — Community ──────────────────────────────────────────── */}
-      <section className="room bg-cream">
+      <section className="room bg-night-soft">
         <div className="room-inner">
           <Reveal className="mx-auto max-w-3xl text-center">
             <RoomLabel>Room Eight</RoomLabel>
             <h2 className="mt-8 font-display text-room font-light">Community</h2>
             <div className="mx-auto mt-10 rule" />
             {community[0] && (
-              <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
+              <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-onNightSoft">
                 {community[0].summary}
               </p>
             )}
@@ -304,14 +304,14 @@ export default function HomePage() {
                 <li
                   key={c.id}
                   className={`font-display text-xl font-light italic ${
-                    c.live ? "text-ink-onNight" : "text-charcoal-faint"
+                    c.live ? "text-ink-onNight" : "text-ink-onNight-faint"
                   }`}
                 >
                   {c.name}
                 </li>
               ))}
             </ul>
-            <p className="mt-12 font-body text-xs font-light tracking-wide text-charcoal-faint">
+            <p className="mt-12 font-body text-xs font-light tracking-wide text-ink-onNight-faint">
               {liveCollections.length} of {collections.length} open. The rest are
               being written.
             </p>

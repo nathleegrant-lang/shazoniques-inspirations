@@ -33,7 +33,7 @@ export default function AuthorsPage() {
         intro={AUTHORS_INTRO}
       />
 
-      <section className="bg-cream px-6 py-24 sm:px-10" aria-label="The authors">
+      <section className="bg-night px-6 py-24 sm:px-10" aria-label="The authors">
         <div className="mx-auto grid max-w-site gap-20 lg:grid-cols-2 lg:gap-16">
           {authors.map((author) => {
             const list = booksByAuthor(author.slug);
@@ -57,17 +57,17 @@ export default function AuthorsPage() {
                   </h2>
 
                   <p className="lockup mt-4 text-gold-deep/80">{author.title}</p>
-                  <p className="mt-3 font-display text-base italic text-ink-faint">
+                  <p className="mt-3 font-display text-base italic text-charcoal-faint">
                     {author.role}
                   </p>
 
-                  <p className="mt-8 max-w-prose font-body font-light leading-relaxed text-ink-soft">
+                  <p className="mt-8 max-w-prose font-body font-light leading-relaxed text-ink-onNightSoft">
                     {author.biography[0]}
                   </p>
 
                   <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
                     {author.focusAreas.map((f) => (
-                      <li key={f} className="lockup text-ink-faint">
+                      <li key={f} className="lockup text-charcoal-faint">
                         {f}
                       </li>
                     ))}
@@ -84,7 +84,7 @@ export default function AuthorsPage() {
                 {list.length > 0 && (
                   <>
                     <div className="mx-auto mt-20 rule" />
-                    <h3 className="lockup mt-8 text-center text-ink-faint">
+                    <h3 className="lockup mt-8 text-center text-charcoal-faint">
                       {list.length} {list.length === 1 ? "book" : "books"}
                     </h3>
                     <ul className="mt-12 grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-3">

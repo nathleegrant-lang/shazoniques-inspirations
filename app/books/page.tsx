@@ -15,7 +15,7 @@ export default function BooksPage() {
   const sharedBooks = books.filter((book) => book.authorSlugs.length > 1);
 
   return (
-    <main className="overflow-hidden bg-cream-shell">
+    <main className="overflow-hidden bg-night">
       <PageHeader
         eyebrow={`${books.length} titles · two founding authors`}
         title="Books & Publications"
@@ -24,7 +24,7 @@ export default function BooksPage() {
 
       {sharedBooks.length > 0 && (
         <section
-          className="border-t border-gold/15 bg-cream px-6 py-20 sm:px-10 sm:py-24"
+          className="border-t border-gold/20 bg-night px-6 py-20 sm:px-10 sm:py-24"
           aria-labelledby="shared-books-heading"
         >
           <div className="mx-auto max-w-site">
@@ -33,14 +33,14 @@ export default function BooksPage() {
 
               <h2
                 id="shared-books-heading"
-                className="mt-5 font-display text-4xl font-light leading-tight text-ink sm:text-5xl"
+                className="mt-5 font-display text-4xl font-light leading-tight text-ink-onNight sm:text-5xl"
               >
                 Two Authors. One Story.
               </h2>
 
               <div className="mx-auto mt-7 rule" />
 
-              <p className="mx-auto mt-7 max-w-xl font-body text-base font-light leading-8 text-ink-soft sm:text-lg">
+              <p className="mx-auto mt-7 max-w-xl font-body text-base font-light leading-8 text-ink-onNightSoft sm:text-lg">
                 Publications created through the shared vision and voices of
                 both founding authors.
               </p>
@@ -71,8 +71,8 @@ export default function BooksPage() {
             key={author.slug}
             id={author.slug}
             aria-labelledby={`author-heading-${author.slug}`}
-            className={`scroll-mt-24 border-t border-gold/15 px-6 py-20 sm:px-10 sm:py-24 ${
-              index % 2 === 0 ? "bg-cream-shell" : "bg-cream"
+            className={`scroll-mt-24 border-t border-gold/20 px-6 py-20 sm:px-10 sm:py-24 ${
+              index % 2 === 0 ? "bg-night" : "bg-night-soft"
             }`}
           >
             <div className="mx-auto max-w-site">
@@ -84,17 +84,17 @@ export default function BooksPage() {
 
                   <h2
                     id={`author-heading-${author.slug}`}
-                    className="mt-4 break-normal font-display text-4xl font-light leading-tight text-ink sm:text-5xl lg:text-6xl"
+                    className="mt-4 break-normal font-display text-4xl font-light leading-tight text-ink-onNight sm:text-5xl lg:text-6xl"
                   >
                     {author.name}
                   </h2>
 
-                  <p className="mt-5 max-w-2xl font-body text-base font-light leading-8 text-ink-soft sm:text-lg">
+                  <p className="mt-5 max-w-2xl font-body text-base font-light leading-8 text-ink-onNightSoft sm:text-lg">
                     {author.role}
                   </p>
                 </div>
 
-                <p className="lockup whitespace-nowrap text-ink-faint">
+                <p className="lockup whitespace-nowrap text-charcoal-faint">
                   {authorBooks.length}{" "}
                   {authorBooks.length === 1 ? "title" : "titles"}
                 </p>

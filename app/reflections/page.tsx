@@ -34,7 +34,7 @@ export default function ReflectionsPage() {
       />
 
       <section className="shell py-16" aria-labelledby="today-heading">
-        <div className="grid items-center gap-10 rounded-card border border-ink/10 bg-white/50 p-6 sm:p-10 lg:grid-cols-[minmax(0,300px)_1fr]">
+        <div className="grid items-center gap-10 rounded-card border border-charcoal-line bg-charcoal p-6 sm:p-10 lg:grid-cols-[minmax(0,300px)_1fr]">
           <Link href={`/reflections/${today.id}`} className="block">
             <ReflectionPlate reflection={today} priority />
           </Link>
@@ -46,10 +46,10 @@ export default function ReflectionsPage() {
             <blockquote className="mt-5 max-w-prose font-display text-xl leading-relaxed">
               {today.text}
             </blockquote>
-            <p className="mt-4 font-body text-sm text-ink-soft">
+            <p className="mt-4 font-body text-sm text-ink-onNightSoft">
               {today.author}
               <span className="mx-2 text-gold">·</span>
-              <span className="italic text-ink-faint">{today.book}</span>
+              <span className="italic text-charcoal-faint">{today.book}</span>
             </p>
             <Link
               href={`/reflections/${today.id}`}
@@ -76,7 +76,7 @@ export default function ReflectionsPage() {
           Collections
         </h2>
         <div className="rule-gold mt-4" />
-        <p className="mt-4 max-w-prose font-body text-ink-soft">
+        <p className="mt-4 max-w-prose font-body text-ink-onNightSoft">
           Every book becomes a permanent reflection collection. Breaking Chains is
           the first; the others follow as their libraries are prepared.
         </p>
@@ -86,8 +86,8 @@ export default function ReflectionsPage() {
               key={c.id}
               className={`rounded-card border p-5 ${
                 c.live
-                  ? "border-gold/40 bg-white/60"
-                  : "border-dashed border-ink/15"
+                  ? "border-gold/40 bg-charcoal"
+                  : "border-dashed border-charcoal-line"
               }`}
             >
               <div className="flex items-baseline justify-between gap-3">
@@ -96,8 +96,8 @@ export default function ReflectionsPage() {
                   {c.live ? "Live" : "In preparation"}
                 </span>
               </div>
-              <p className="mt-2 font-body text-sm text-ink-soft">{c.theme}</p>
-              <p className="mt-1 font-body text-xs italic text-ink-faint">
+              <p className="mt-2 font-body text-sm text-ink-onNightSoft">{c.theme}</p>
+              <p className="mt-1 font-body text-xs italic text-charcoal-faint">
                 {c.palette}
               </p>
             </li>

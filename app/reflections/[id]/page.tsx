@@ -66,12 +66,12 @@ export default async function ReflectionPage({ params }: Props) {
         stop — so the page stops too. What remains: the words, who wrote them,
         where they came from, a way to pass them on, and a door to the next one.
       */}
-      <article className="bg-cream-shell px-6 pb-28 pt-20 sm:px-10 sm:pt-28">
+      <article className="surface-read px-6 pb-28 pt-20 sm:px-10 sm:pt-28">
         <div className="mx-auto max-w-reflection">
           <p className="lockup text-center text-gold-deep/70">{reflection.code}</p>
 
           {/* The reflection. Nothing on this screen is louder. */}
-          <blockquote className="mt-16 text-center font-display text-quote font-light italic leading-snug text-charcoal">
+          <blockquote className="mt-16 text-center font-display text-quote font-light italic leading-snug text-ink">
             {reflection.text}
           </blockquote>
 
@@ -108,8 +108,8 @@ export default async function ReflectionPage({ params }: Props) {
         </p>
       </section>
 
-      {/* Pass it on. */}
-      <section className="bg-cream px-6 py-24 sm:px-10">
+      {/* Pass it on — back on the house surface. */}
+      <section className="bg-night-soft px-6 py-24 sm:px-10">
         <div className="mx-auto max-w-reflection text-center">
           <p className="lockup text-gold-deep/80">Share this reflection</p>
           <div className="mt-10 flex justify-center">
@@ -121,14 +121,14 @@ export default async function ReflectionPage({ params }: Props) {
       {/* The door to the next one. Two quiet doors, and the library between them. */}
       <nav
         aria-label="Reflections"
-        className="border-t border-ink/10 bg-cream-shell px-6 py-16 sm:px-10"
+        className="border-t border-charcoal-line bg-night px-6 py-16 sm:px-10"
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 sm:flex-row sm:justify-between">
           <div className="w-full text-center sm:w-1/3 sm:text-left">
             {previous && (
               <Link href={`/reflections/${previous.id}`} className="group inline-block">
-                <span className="lockup text-ink-faint">Previous</span>
-                <span className="mt-3 block font-display text-lg font-light italic transition-colors duration-500 ease-calm group-hover:text-gold-deep">
+                <span className="lockup text-charcoal-faint">Previous</span>
+                <span className="mt-3 block font-display text-lg font-light italic text-ink-onNight transition-colors duration-500 ease-calm group-hover:text-gold-soft">
                   {previous.title}
                 </span>
               </Link>
@@ -137,7 +137,7 @@ export default async function ReflectionPage({ params }: Props) {
 
           <Link
             href="/reflections"
-            className="lockup text-ink-faint transition-colors duration-500 ease-calm hover:text-gold-deep"
+            className="lockup text-charcoal-faint transition-colors duration-500 ease-calm hover:text-gold-soft"
           >
             All reflections
           </Link>
@@ -145,8 +145,8 @@ export default async function ReflectionPage({ params }: Props) {
           <div className="w-full text-center sm:w-1/3 sm:text-right">
             {next && (
               <Link href={`/reflections/${next.id}`} className="group inline-block">
-                <span className="lockup text-ink-faint">Next</span>
-                <span className="mt-3 block font-display text-lg font-light italic transition-colors duration-500 ease-calm group-hover:text-gold-deep">
+                <span className="lockup text-charcoal-faint">Next</span>
+                <span className="mt-3 block font-display text-lg font-light italic text-ink-onNight transition-colors duration-500 ease-calm group-hover:text-gold-soft">
                   {next.title}
                 </span>
               </Link>

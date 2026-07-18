@@ -51,7 +51,7 @@ export default function ArtsMediaPage() {
                   <h2 className="font-display text-xl group-hover:text-gold-deep">
                     {m.title}
                   </h2>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-3 font-body text-sm leading-relaxed text-ink-onNightSoft">
                     {m.note}
                   </p>
                 </div>
@@ -61,9 +61,9 @@ export default function ArtsMediaPage() {
           ))}
         </ul>
 
-        <div className="mt-14 max-w-prose rounded-card border border-dashed border-ink/20 p-8">
+        <div className="mt-14 max-w-prose rounded-card border border-dashed border-charcoal-line p-8">
           <h2 className="font-display text-xl">Reflection artwork</h2>
-          <p className="mt-3 font-body leading-relaxed text-ink-soft">
+          <p className="mt-3 font-body leading-relaxed text-ink-onNightSoft">
             Each reflection in the library is designed to carry its own artwork.
             Until those pieces are finished, every reflection is set as a
             typographic plate coloured by its own suggested palette — so the

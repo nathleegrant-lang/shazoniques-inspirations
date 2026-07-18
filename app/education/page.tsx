@@ -28,7 +28,7 @@ export default function EducationPage() {
             const Body = (
               <>
                 {p.image && (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-cream-deep">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-charcoal">
                     <Image
                       src={p.image}
                       alt={`${p.title} — cover`}
@@ -45,7 +45,7 @@ export default function EducationPage() {
                       <span className="eyebrow shrink-0">In development</span>
                     )}
                   </div>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-3 font-body text-sm leading-relaxed text-ink-onNightSoft">
                     {p.summary}
                   </p>
                   {live && (
@@ -69,7 +69,7 @@ export default function EducationPage() {
                     {Body}
                   </a>
                 ) : (
-                  <div className="h-full rounded-card border border-dashed border-ink/20 p-5">
+                  <div className="h-full rounded-card border border-dashed border-charcoal-line p-5">
                     {Body}
                   </div>
                 )}

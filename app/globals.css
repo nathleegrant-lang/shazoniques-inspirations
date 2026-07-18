@@ -12,14 +12,14 @@
   }
 
   body {
-    @apply bg-cream text-ink font-body;
+    @apply bg-night text-ink-onNight font-body;
     font-weight: 400;
   }
 
   /* Display type is set light and large. At these sizes a light weight reads as
      elegance; at small sizes it would read as weakness — so it is never used small. */
   h1, h2, h3 {
-    @apply font-display text-charcoal;
+    @apply font-display text-ink-onNight;
     font-weight: 300;
     text-wrap: balance;
   }
@@ -31,15 +31,32 @@
   }
 
   ::selection {
-    background: var(--color-gold-light);
+    background: var(--color-gold-soft);
     color: var(--color-night);
   }
 }
 
 @layer components {
   .skip-link {
-    @apply absolute left-6 -top-24 z-50 bg-night px-5 py-3 text-cream
+    @apply absolute left-6 -top-24 z-50 bg-charcoal px-5 py-3 text-ink-onNight
            font-body text-sm tracking-wide transition-all focus:top-6;
+  }
+
+  /* ── Surfaces ────────────────────────────────────────────────────────────
+     The house is dark. `surface-dark` is the default identity — rich black,
+     warm-white type. `surface-read` is the exception, reserved for sustained
+     reading (reflection text, book prose): cool ivory, dark ink. Two surfaces,
+     each with a clear job, so no page has to guess its own colours. */
+  .surface-dark {
+    @apply bg-night text-ink-onNight;
+  }
+
+  .surface-panel {
+    @apply bg-charcoal text-ink-onNight;
+  }
+
+  .surface-read {
+    @apply bg-cream text-ink;
   }
 
   /* A room is a full-width band with real air above and below. */
@@ -53,32 +70,59 @@
     @apply mx-auto w-full max-w-site;
   }
 
+  .shell {
+    @apply mx-auto w-full max-w-site px-6 sm:px-10;
+  }
+
   /* Small capitals, tracked wide — the logo's own typographic voice. */
   .lockup {
     @apply font-body text-[0.6875rem] uppercase tracking-lockup;
   }
 
+  /* The eyebrow above a title: gold small-caps, exactly as the brand reference. */
+  .eyebrow {
+    @apply font-body text-[0.6875rem] uppercase tracking-lockup text-gold-soft;
+  }
+
   .rule {
-    @apply h-px w-16 bg-gold/40;
+    @apply h-px w-16 bg-gold/50;
   }
 
-  /* Buttons are quiet. One per room, at most. */
-  .btn-gold {
+  .rule-gold {
+    @apply h-px w-16 bg-gold/50;
+  }
+
+  /* ── A card, as in the reference: a charcoal panel with a fine gold edge ──*/
+  .card {
+    @apply border border-charcoal-line bg-charcoal transition-colors duration-500
+           ease-calm hover:border-gold/40;
+  }
+
+  /* ── Buttons: a fine gold rule, gold small-caps. One per room, at most. ───*/
+  .btn-gold,
+  .btn-gold-on-night,
+  .btn-primary {
     @apply inline-flex items-center justify-center gap-3 border border-gold/50
-           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
-           text-gold-deep transition-all duration-500 ease-calm
-           hover:border-gold hover:bg-gold/5;
-  }
-
-  .btn-gold-on-night {
-    @apply inline-flex items-center justify-center gap-3 border border-gold/40
            bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
            text-gold-soft transition-all duration-500 ease-calm
            hover:border-gold-soft hover:bg-gold-soft/10;
   }
 
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-3 border border-charcoal-line
+           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
+           text-ink-onNightSoft transition-all duration-500 ease-calm
+           hover:border-ink-onNightSoft/60 hover:text-ink-onNight;
+  }
+
+  /* On an ivory reading surface, gold text must be the dark gold to stay legible. */
+  .surface-read .btn-gold,
+  .surface-read .btn-primary {
+    @apply border-gold/50 text-gold-deep hover:border-gold hover:bg-gold/5;
+  }
+
   .link-quiet {
-    @apply transition-colors duration-500 ease-calm hover:text-gold-deep;
+    @apply transition-colors duration-500 ease-calm hover:text-gold-soft;
   }
 
   .link-underline {
@@ -88,7 +132,7 @@
 
   /* Reading measure for long prose. */
   .prose-quiet {
-    @apply max-w-prose font-body text-lead font-light text-ink-soft;
+    @apply max-w-prose font-body text-lead font-light text-ink-onNightSoft;
   }
 }
 

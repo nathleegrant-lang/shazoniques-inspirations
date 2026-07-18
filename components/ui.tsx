@@ -24,11 +24,11 @@ export function SectionHeading({
 }) {
   return (
     <div className="max-w-prose">
-      {eyebrow && <p className="lockup text-gold-deep/80">{eyebrow}</p>}
+      {eyebrow && <p className="lockup text-gold-soft">{eyebrow}</p>}
       <h2 className="mt-6 font-display text-room font-light">{title}</h2>
       <div className="rule mt-8" />
       {children && (
-        <p className="mt-8 font-body text-lead font-light leading-relaxed text-ink-soft">
+        <p className="mt-8 font-body text-lead font-light leading-relaxed text-ink-onNightSoft">
           {children}
         </p>
       )}
@@ -52,13 +52,15 @@ export function PageHeader({
   intro?: string;
 }) {
   return (
-    <header className="bg-cream-shell px-6 pb-20 pt-24 text-center sm:px-10 sm:pt-32">
+    <header className="bg-night px-6 pb-20 pt-24 text-center sm:px-10 sm:pt-32">
       <div className="mx-auto max-w-3xl">
-        <p className="lockup text-gold-deep/80">{eyebrow}</p>
-        <h1 className="mt-8 font-display text-room font-light">{title}</h1>
+        <p className="lockup text-gold-soft">{eyebrow}</p>
+        <h1 className="mt-8 font-display text-room font-light text-ink-onNight">
+          {title}
+        </h1>
         <div className="mx-auto mt-10 rule" />
         {intro && (
-          <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-10 max-w-prose font-body text-lead font-light leading-relaxed text-ink-onNightSoft">
             {intro}
           </p>
         )}
@@ -112,16 +114,16 @@ export function BookCard({ book }: { book: Book }) {
         <div className="transition-transform duration-700 ease-calm group-hover:-translate-y-1.5">
           <BookCover book={book} />
         </div>
-        <h3 className="mt-8 font-display text-xl font-light leading-snug transition-colors duration-500 ease-calm group-hover:text-gold-deep">
+        <h3 className="mt-8 font-display text-xl font-light leading-snug text-ink-onNight transition-colors duration-500 ease-calm group-hover:text-gold-soft">
           {book.title}
         </h3>
       </Link>
       {book.subtitle && (
-        <p className="mt-2 font-display text-sm italic text-ink-faint">
+        <p className="mt-2 font-display text-sm italic text-charcoal-faint">
           {book.subtitle}
         </p>
       )}
-      <p className="lockup mt-4 text-ink-faint">{authorNames(book)}</p>
+      <p className="lockup mt-4 text-charcoal-faint">{authorNames(book)}</p>
     </article>
   );
 }
@@ -184,7 +186,7 @@ export function ExternalLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="link-underline font-body text-sm font-light text-ink"
+      className="link-underline font-body text-sm font-light text-ink-onNight"
     >
       {children}
     </a>

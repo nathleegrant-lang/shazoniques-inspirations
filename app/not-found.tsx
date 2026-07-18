@@ -18,7 +18,7 @@ export default function NotFound() {
         This page isn&rsquo;t here
       </h1>
       <div className="rule-gold mx-auto mt-5" />
-      <p className="mx-auto mt-5 max-w-prose font-body text-lg text-ink-soft">
+      <p className="mx-auto mt-5 max-w-prose font-body text-lg text-ink-onNightSoft">
         The link may be old, or the page may have moved when the site was rebuilt.
         Everything is still here — start again from one of these.
       </p>

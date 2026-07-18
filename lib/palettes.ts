@@ -1,16 +1,19 @@
 /**
- * The nine palettes.
+ * The nine plates.
  *
- * Every reflection in the tracker carries a "Suggested Colour Palette". There
- * are exactly nine across the Breaking Chains library, and they are the reason
- * the collection does not need 120 photographs to look considered.
+ * Every reflection carries a "Suggested Colour Palette" from the tracker — nine
+ * across the library. They are the reason 120 reflections need no photographs to
+ * look considered.
  *
- * Version 2.0 re-tunes all nine. The first pass rendered them as the spreadsheet
- * literally described — saturated sunrise oranges, a bright burgundy. Held next
- * to the logo they were loud, and loud is the one thing this house is not. Each
- * palette is now a *whisper* of its colour over warm paper or warm dark: the
- * hue is still unmistakably Warm Sunrise or Deep Burgundy, but it never raises
- * its voice, and the reflection is always the loudest thing on the plate.
+ * Version 3.0 brings them into the house. Earlier passes rendered each plate as a
+ * pale wash of its named colour; on the restored dark identity, nine pale
+ * rectangles would glow like light-boxes and shatter the calm. So every plate is
+ * now the house itself: rich charcoal, gold rule, warm-white words — exactly the
+ * devotional card in the brand reference. The nine palettes survive as the
+ * faintest shift in the dark ground and in the temperature of the gold, so the
+ * library still breathes rather than repeats, but no plate ever raises its voice.
+ *
+ * The reflection is always the brightest thing on the plate.
  *
  * When real artwork lands, drop BC-001.png into /public/images/reflections/ and
  * set `artwork` on the record. The plate steps aside.
@@ -31,77 +34,35 @@ export interface PaletteTheme {
 }
 
 export const PALETTES: Record<string, PaletteTheme> = {
+  // Each plate is a dark charcoal ground with a gold rule and warm-white text.
+  // The only variation is a faint shift in the ground and the gold's warmth —
+  // enough that the wall of 120 never reads as identical, never as loud.
   "Warm Sunrise": {
-    from: "#FBF3E6",
-    to: "#EBD3B4",
-    ink: "#4A3524",
-    accent: "#A9793C",
-    muted: "#7C6144",
-    dark: false,
+    from: "#241E16", to: "#141210", ink: "#F1ECE2", accent: "#E2C254", muted: "#B9B2A4", dark: true,
   },
   "Golden Light": {
-    from: "#FDF6E4",
-    to: "#EEDCAF",
-    ink: "#463A1C",
-    accent: "#8A6D22",
-    muted: "#75633A",
-    dark: false,
+    from: "#241F13", to: "#14110A", ink: "#F3EEDD", accent: "#E7CB63", muted: "#BBB39A", dark: true,
   },
   "Morning Mist": {
-    from: "#F4F5F1",
-    to: "#D9DED6",
-    ink: "#333A31",
-    accent: "#5E6E58",
-    muted: "#5B6157",
-    dark: false,
+    from: "#1B1F1C", to: "#101211", ink: "#EDEFEA", accent: "#D9BC5E", muted: "#AEB2A9", dark: true,
   },
   "Soft Blue": {
-    from: "#F1F4F6",
-    to: "#D2DDE4",
-    ink: "#2C3A44",
-    accent: "#4F6B7C",
-    muted: "#516069",
-    dark: false,
+    from: "#171C21", to: "#0F1113", ink: "#E9EDF0", accent: "#D9BC5E", muted: "#A7AEB4", dark: true,
   },
   Cream: {
-    from: "#FDFAF3",
-    to: "#F0E7D4",
-    ink: "#3E3729",
-    accent: "#8A6D22",
-    muted: "#6D6455",
-    dark: false,
+    from: "#221F18", to: "#13110C", ink: "#F3EEE2", accent: "#D9BC5E", muted: "#B8B1A2", dark: true,
   },
   "Earth Tones": {
-    from: "#F2E9DC",
-    to: "#D2BEA3",
-    ink: "#3F3427",
-    accent: "#7A5C3C",
-    muted: "#645440",
-    dark: false,
+    from: "#221C15", to: "#13100B", ink: "#F0E9DB", accent: "#D2A94E", muted: "#B6AC99", dark: true,
   },
   "Slate Grey": {
-    from: "#2E3134",
-    to: "#191B1D",
-    ink: "#EDEAE3",
-    accent: "#E2C254",
-    muted: "#A7A9A6",
-    dark: true,
+    from: "#1E1F21", to: "#111213", ink: "#EDEDEE", accent: "#D9BC5E", muted: "#ABABAD", dark: true,
   },
   "Deep Burgundy": {
-    from: "#3A2028",
-    to: "#1A1013",
-    ink: "#F1E6DC",
-    accent: "#E2C254",
-    muted: "#C3A79C",
-    dark: true,
+    from: "#241619", to: "#140C0E", ink: "#F1E4E2", accent: "#E2C254", muted: "#BAA6A4", dark: true,
   },
   "Autumn Gold": {
-    from: "#F7EBD5",
-    to: "#DFC08A",
-    ink: "#4A3A1E",
-    accent: "#8E6A22",
-    muted: "#75603A",
-    dark: false,
+    from: "#241D12", to: "#14100A", ink: "#F3EBD9", accent: "#E7C65C", muted: "#BBB097", dark: true,
   },
 };
 

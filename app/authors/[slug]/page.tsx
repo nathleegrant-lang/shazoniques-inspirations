@@ -96,7 +96,7 @@ export default async function AuthorPage({ params }: Props) {
           <div className="rule-gold mt-4" />
           <div className="mt-6 max-w-prose space-y-4">
             {author.biography.map((p, i) => (
-              <p key={i} className="font-body text-lg leading-relaxed text-ink-soft">
+              <p key={i} className="font-body text-lg leading-relaxed text-ink-onNightSoft">
                 {p}
               </p>
             ))}
@@ -108,7 +108,7 @@ export default async function AuthorPage({ params }: Props) {
             {author.focusAreas.map((f) => (
               <li
                 key={f}
-                className="rounded-full border border-ink/10 bg-white/50 px-3 py-1 font-body text-sm text-ink-soft"
+                className="rounded-full border border-charcoal-line bg-charcoal px-3 py-1 font-body text-sm text-ink-onNightSoft"
               >
                 {f}
               </li>
@@ -118,7 +118,7 @@ export default async function AuthorPage({ params }: Props) {
       </section>
 
       {featured.length > 0 && (
-        <section className="border-t border-ink/10 bg-cream-deep/50 py-16" aria-labelledby="featured">
+        <section className="border-t border-charcoal-line bg-charcoal/40 py-16" aria-labelledby="featured">
           <div className="shell">
             <p className="eyebrow">Featured work</p>
             <h2 id="featured" className="mt-2 font-display text-2xl">
@@ -154,7 +154,7 @@ export default async function AuthorPage({ params }: Props) {
       </section>
 
       {authorReflections.length > 0 && (
-        <section className="shell border-t border-ink/10 py-16" aria-labelledby="refl">
+        <section className="shell border-t border-charcoal-line py-16" aria-labelledby="refl">
           <p className="eyebrow">
             {reflections.filter((r) => r.authorSlug === author.slug).length} reflections
           </p>

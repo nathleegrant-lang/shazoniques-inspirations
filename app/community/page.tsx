@@ -27,7 +27,7 @@ export default function CommunityPage() {
               <p className="eyebrow">{p.owner}</p>
               <h2 className="mt-2 font-display text-3xl">{p.title}</h2>
               <div className="rule-gold mt-4" />
-              <p className="mt-5 max-w-prose font-body text-lg leading-relaxed text-ink-soft">
+              <p className="mt-5 max-w-prose font-body text-lg leading-relaxed text-ink-onNightSoft">
                 {p.summary}
               </p>
               {p.externalUrl && (

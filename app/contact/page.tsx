@@ -45,7 +45,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="font-display text-2xl">{c.title}</h2>
                 <div className="rule-gold mt-4" />
-                <p className="mt-5 font-body leading-relaxed text-ink-soft">
+                <p className="mt-5 font-body leading-relaxed text-ink-onNightSoft">
                   {c.body}
                 </p>
               </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 href={EXTERNAL.devotionsSite}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline text-ink"
+                className="link-underline text-ink-onNight"
               >
                 Shazonique&rsquo;s Inspiration Family Devotions
               </a>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 href={EXTERNAL.legacySite}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline text-ink"
+                className="link-underline text-ink-onNight"
               >
                 The original Shazonique&rsquo;s Inspiration site
               </a>

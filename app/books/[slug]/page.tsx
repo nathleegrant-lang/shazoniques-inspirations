@@ -115,7 +115,7 @@ export default async function BookPage({ params }: Props) {
             </p>
           )}
 
-          <p className="mt-3 font-body text-sm uppercase tracking-wider text-ink-faint">
+          <p className="mt-3 font-body text-sm uppercase tracking-wider text-charcoal-faint">
             {bookAuthors.map((a, i) => (
               <span key={a.slug}>
                 {i > 0 && <span className="mx-2 text-gold">&amp;</span>}
@@ -138,18 +138,18 @@ export default async function BookPage({ params }: Props) {
               <p className="lockup mt-5" style={{ color: mood.accent }}>
                 {collection.name}
               </p>
-              <p className="mt-2 font-display text-base italic text-ink-faint">
+              <p className="mt-2 font-display text-base italic text-charcoal-faint">
                 {mood.mood}
               </p>
             </div>
           )}
 
           {book.description ? (
-            <p className="mt-8 max-w-prose font-body text-lg leading-relaxed text-ink-soft">
+            <p className="mt-8 max-w-prose font-body text-lg leading-relaxed text-ink-onNightSoft">
               {book.description}
             </p>
           ) : (
-            <p className="mt-8 max-w-prose font-body text-ink-faint">
+            <p className="mt-8 max-w-prose font-body text-charcoal-faint">
               A full description of this book is being prepared. In the meantime
               you can find it at the retailers below.
             </p>
@@ -158,7 +158,7 @@ export default async function BookPage({ params }: Props) {
           {book.excerpt && (
             <blockquote className="mt-10 border-l-2 border-gold/50 py-2 pl-6">
               <p className="eyebrow">From the book</p>
-              <p className="mt-3 max-w-prose font-display text-lg leading-relaxed text-ink">
+              <p className="mt-3 max-w-prose font-display text-lg leading-relaxed text-ink-onNight">
                 {book.excerpt}
               </p>
             </blockquote>
@@ -169,7 +169,7 @@ export default async function BookPage({ params }: Props) {
               {book.themes.map((t) => (
                 <li
                   key={t}
-                  className="rounded-full border border-ink/10 px-3 py-1 font-body text-xs text-ink-faint"
+                  className="rounded-full border border-charcoal-line px-3 py-1 font-body text-xs text-charcoal-faint"
                 >
                   {t}
                 </li>
@@ -214,7 +214,7 @@ export default async function BookPage({ params }: Props) {
 
       {related.length > 0 && (
         <section
-          className="border-t border-ink/10 bg-cream-deep/50 py-16"
+          className="border-t border-charcoal-line bg-night-soft py-16"
           aria-labelledby="related"
         >
           <div className="shell">
@@ -251,7 +251,7 @@ export default async function BookPage({ params }: Props) {
           the same author's shelf, then anything the two founders wrote together. */}
       {alsoRead.length > 0 && (
         <section
-          className="bg-cream-shell px-6 py-24 sm:px-10"
+          className="bg-night px-6 py-24 sm:px-10"
           aria-labelledby="also-read"
         >
           <div className="mx-auto max-w-site">

@@ -21,7 +21,7 @@ export default function AboutPage() {
       />
 
       <section className="shell py-16">
-        <div className="max-w-prose space-y-5 font-body text-lg leading-relaxed text-ink-soft">
+        <div className="max-w-prose space-y-5 font-body text-lg leading-relaxed text-ink-onNightSoft">
           <p>
             Shazonique is a family name before it is a brand. It was made from the
             names of the people it was built for, and it has always meant a
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-ink/10 bg-cream-deep/50 py-16" aria-labelledby="the-authors">
+      <section className="border-y border-charcoal-line bg-charcoal/40 py-16" aria-labelledby="the-authors">
         <div className="shell">
           <p className="eyebrow">Founding authors</p>
           <h2 id="the-authors" className="mt-2 font-display text-3xl">
@@ -85,7 +85,7 @@ export default function AboutPage() {
           Every book becomes a library
         </h2>
         <div className="rule-gold mt-4" />
-        <p className="mt-5 max-w-prose font-body text-lg leading-relaxed text-ink-soft">
+        <p className="mt-5 max-w-prose font-body text-lg leading-relaxed text-ink-onNightSoft">
           A book does not end when it is printed. Each one becomes a permanent
           collection of reflections — one central truth at a time, held briefly,
           returned to daily. Breaking Chains is the first collection to open. These
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <li
               key={c.id}
               className={`rounded-card border p-5 ${
-                c.live ? "border-gold/40 bg-white/60" : "border-dashed border-ink/15"
+                c.live ? "border-gold/40 bg-charcoal" : "border-dashed border-charcoal-line"
               }`}
             >
               <div className="flex items-baseline justify-between gap-3">
@@ -106,7 +106,7 @@ export default function AboutPage() {
                   {c.live ? "Live" : "In preparation"}
                 </span>
               </div>
-              <p className="mt-2 font-body text-sm text-ink-soft">{c.theme}</p>
+              <p className="mt-2 font-body text-sm text-ink-onNightSoft">{c.theme}</p>
             </li>
           ))}
         </ul>

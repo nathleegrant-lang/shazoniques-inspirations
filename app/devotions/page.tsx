@@ -21,7 +21,7 @@ export default function DevotionsPage() {
       />
 
       <section className="shell py-16">
-        <div className="max-w-prose space-y-4 font-body text-lg leading-relaxed text-ink-soft">
+        <div className="max-w-prose space-y-4 font-body text-lg leading-relaxed text-ink-onNightSoft">
           <p>
             These devotions are not just written pieces, but the fruit of real
             conversations — of wrestling with truth, listening for God, and
@@ -33,7 +33,7 @@ export default function DevotionsPage() {
             spiritual renewal. It is a place where words can minister, families can
             connect, and faith can be nurtured one devotion at a time.
           </p>
-          <p className="text-sm italic text-ink-faint">
+          <p className="text-sm italic text-charcoal-faint">
             Please note: the transcription and refinement of these recorded family
             discussions were completed with the assistance of AI tools, helping us
             preserve and present each moment with clarity and care.
@@ -56,7 +56,7 @@ export default function DevotionsPage() {
         return (
           <section
             key={group}
-            className="shell border-t border-ink/10 py-14"
+            className="shell border-t border-charcoal-line py-14"
             aria-labelledby={group}
           >
             <p className="eyebrow">{items.length} in this series</p>
@@ -78,7 +78,7 @@ export default function DevotionsPage() {
                       <h3 className="font-display text-lg group-hover:text-gold-deep">
                         {d.title}
                       </h3>
-                      <p className="mt-2 font-body text-sm text-ink-soft">
+                      <p className="mt-2 font-body text-sm text-ink-onNightSoft">
                         {d.summary}
                       </p>
                     </div>

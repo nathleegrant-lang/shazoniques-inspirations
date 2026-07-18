@@ -10,13 +10,14 @@ import type { Collection } from "@/lib/types";
  * is midnight with one lamp lit, because that is literally the parable. Rooted is
  * earth. Faith Finds Home is a warm morning. Bits & Bites is quiet and spare.
  *
- * This is expressed with restraint: a single accent colour and a mood, used for a
- * hairline, a label, a hover. Never a themed page, never a wash of colour. The
- * house is one house, and gold and cream hold it together.
+ * v3.0 — the per-collection pastel accents (clay, moss, midnight, morning, slate)
+ * are RETIRED. One house, one identity: gold on charcoal. A collection now shows
+ * its character through its MOOD WORDS alone — language, not a colour swatch. Every
+ * accent below is the house gold, kept as a field only so existing callers still work.
  */
 
 export interface CollectionMood {
-  /** The one accent. Subtle earth tones only — never a loud colour. */
+  /** Retired as a differentiator — always the house gold now. Kept for callers. */
   accent: string;
   /** Three words. They are used as a caption, so they must read as English. */
   mood: string;
@@ -24,23 +25,23 @@ export interface CollectionMood {
 
 const MOODS: Record<string, CollectionMood> = {
   "breaking-chains": {
-    accent: "#9A6455", // clay
+    accent: "#B29535", // house gold (pastel retired)
     mood: "Warm healing",
   },
   rooted: {
-    accent: "#35543F", // moss
+    accent: "#B29535", // house gold (pastel retired)
     mood: "Nature. Kingdom.",
   },
   "waiting-for-the-bridegroom": {
-    accent: "#1B2447", // midnight
+    accent: "#B29535", // house gold (pastel retired)
     mood: "Expectation. Hope.",
   },
   "faith-finds-home": {
-    accent: "#B5813F", // warm morning
+    accent: "#B29535", // house gold (pastel retired)
     mood: "Belonging. Warmth.",
   },
   "bits-and-bites": {
-    accent: "#3A3733", // quiet slate
+    accent: "#B29535", // house gold (pastel retired)
     mood: "Minimal. Elegant. Quiet wisdom.",
   },
 };

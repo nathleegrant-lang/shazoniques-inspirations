@@ -62,7 +62,7 @@ export default function ReflectionLibrary({
 
   return (
     <div>
-      <div className="rounded-card border border-ink/10 bg-white/50 p-5">
+      <div className="rounded-card border border-charcoal-line bg-charcoal p-5">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
             <label
@@ -77,7 +77,7 @@ export default function ReflectionLibrary({
               value={query}
               onChange={onChange(setQuery)}
               placeholder="grace, chains, prayer…"
-              className="w-full rounded-card border border-ink/15 bg-cream px-3.5 py-2.5 font-body text-base text-ink placeholder:text-ink-faint/70 focus:border-ink sm:text-sm"
+              className="w-full rounded-card border border-charcoal-line bg-night px-3.5 py-2.5 font-body text-base text-ink-onNight placeholder:text-charcoal-faint/70 focus:border-gold-soft sm:text-sm"
             />
           </div>
 
@@ -90,7 +90,7 @@ export default function ReflectionLibrary({
                 id={s.id}
                 value={s.value}
                 onChange={onChange(s.set)}
-                className="w-full rounded-card border border-ink/15 bg-cream px-3.5 py-2.5 font-body text-base text-ink focus:border-ink sm:text-sm"
+                className="w-full rounded-card border border-charcoal-line bg-night px-3.5 py-2.5 font-body text-base text-ink-onNight focus:border-gold-soft sm:text-sm"
               >
                 <option value="">All</option>
                 {s.options.map((o) => (
@@ -104,14 +104,14 @@ export default function ReflectionLibrary({
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-4">
-          <p aria-live="polite" className="font-body text-sm text-ink-soft">
+          <p aria-live="polite" className="font-body text-sm text-ink-onNightSoft">
             {results.length} of {reflections.length} reflections
           </p>
           {filtered && (
             <button
               type="button"
               onClick={reset}
-              className="font-body text-sm text-ink link-underline"
+              className="font-body text-sm text-ink-onNight link-underline"
             >
               Clear filters
             </button>
@@ -120,11 +120,11 @@ export default function ReflectionLibrary({
       </div>
 
       {results.length === 0 ? (
-        <div className="mt-12 rounded-card border border-dashed border-ink/20 p-12 text-center">
-          <p className="font-display text-xl text-charcoal">
+        <div className="mt-12 rounded-card border border-dashed border-charcoal-line p-12 text-center">
+          <p className="font-display text-xl text-ink-onNight">
             No reflections match those filters
           </p>
-          <p className="mx-auto mt-2 max-w-sm font-body text-sm text-ink-soft">
+          <p className="mx-auto mt-2 max-w-sm font-body text-sm text-ink-onNightSoft">
             Try a broader keyword, or clear a filter to widen the search.
           </p>
           <button type="button" onClick={reset} className="btn-secondary mt-6">
@@ -141,10 +141,10 @@ export default function ReflectionLibrary({
                   className="group block transition-transform hover:-translate-y-1"
                 >
                   <ReflectionPlate reflection={r} />
-                  <h3 className="mt-3 font-display text-base leading-snug text-charcoal group-hover:text-gold-deep">
+                  <h3 className="mt-3 font-display text-base leading-snug text-ink-onNight group-hover:text-gold-deep">
                     {r.title}
                   </h3>
-                  <p className="font-body text-xs text-ink-faint">
+                  <p className="font-body text-xs text-charcoal-faint">
                     {r.theme} · {r.emotion}
                   </p>
                 </Link>
