@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* The approved brand tokens live in tailwind.config.ts. @config keeps that file
-   authoritative — Tailwind v4's pipeline, v2.0's palette. */
 @config "../tailwind.config.ts";
 
 @layer base {
@@ -16,15 +14,31 @@
     font-weight: 400;
   }
 
-  /* Display type is set light and large. At these sizes a light weight reads as
-     elegance; at small sizes it would read as weakness — so it is never used small. */
-  h1, h2, h3 {
+  /*
+   * Headings now use a genuine medium-to-bold Playfair weight.
+   * The former global font-weight: 300 was the main reason headings looked thin.
+   */
+  h1,
+  h2,
+  h3 {
     @apply font-display text-ink-onNight;
-    font-weight: 300;
+    font-weight: 600;
     text-wrap: balance;
   }
 
-  /* Accessibility floor. Visible, calm, never removed. */
+  h4,
+  h5,
+  h6 {
+    @apply font-body;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    font-weight: 400;
+  }
+
   :focus-visible {
     outline: 1px solid var(--color-gold);
     outline-offset: 4px;
@@ -39,14 +53,9 @@
 @layer components {
   .skip-link {
     @apply absolute left-6 -top-24 z-50 bg-charcoal px-5 py-3 text-ink-onNight
-           font-body text-sm tracking-wide transition-all focus:top-6;
+           font-body text-sm font-semibold tracking-wide transition-all focus:top-6;
   }
 
-  /* ── Surfaces ────────────────────────────────────────────────────────────
-     The house is dark. `surface-dark` is the default identity — rich black,
-     warm-white type. `surface-read` is the exception, reserved for sustained
-     reading (reflection text, book prose): cool ivory, dark ink. Two surfaces,
-     each with a clear job, so no page has to guess its own colours. */
   .surface-dark {
     @apply bg-night text-ink-onNight;
   }
@@ -59,7 +68,6 @@
     @apply bg-cream text-ink;
   }
 
-  /* A room is a full-width band with real air above and below. */
   .room {
     @apply px-6 sm:px-10;
     padding-top: theme(spacing.room-y);
@@ -74,48 +82,40 @@
     @apply mx-auto w-full max-w-site px-6 sm:px-10;
   }
 
-  /* Small capitals, tracked wide — the logo's own typographic voice. */
   .lockup {
-    @apply font-body text-[0.6875rem] uppercase tracking-lockup;
+    @apply font-body text-[0.6875rem] font-bold uppercase tracking-lockup;
   }
 
-  /* The eyebrow above a title: gold small-caps, exactly as the brand reference. */
   .eyebrow {
-    @apply font-body text-[0.6875rem] uppercase tracking-lockup text-gold-soft;
+    @apply font-body text-[0.6875rem] font-bold uppercase tracking-lockup text-gold-soft;
   }
 
-  .rule {
-    @apply h-px w-16 bg-gold/50;
-  }
-
+  .rule,
   .rule-gold {
-    @apply h-px w-16 bg-gold/50;
+    @apply h-px w-16 bg-gold/70;
   }
 
-  /* ── A card, as in the reference: a charcoal panel with a fine gold edge ──*/
   .card {
     @apply border border-charcoal-line bg-charcoal transition-colors duration-500
            ease-calm hover:border-gold/40;
   }
 
-  /* ── Buttons: a fine gold rule, gold small-caps. One per room, at most. ───*/
   .btn-gold,
   .btn-gold-on-night,
   .btn-primary {
     @apply inline-flex items-center justify-center gap-3 border border-gold/50
-           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
+           bg-transparent px-9 py-4 font-body text-xs font-bold uppercase tracking-wide
            text-gold-soft transition-all duration-500 ease-calm
            hover:border-gold-soft hover:bg-gold-soft/10;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-3 border border-charcoal-line
-           bg-transparent px-9 py-4 font-body text-xs uppercase tracking-wide
+           bg-transparent px-9 py-4 font-body text-xs font-bold uppercase tracking-wide
            text-ink-onNightSoft transition-all duration-500 ease-calm
            hover:border-ink-onNightSoft/60 hover:text-ink-onNight;
   }
 
-  /* On an ivory reading surface, gold text must be the dark gold to stay legible. */
   .surface-read .btn-gold,
   .surface-read .btn-primary {
     @apply border-gold/50 text-gold-deep hover:border-gold hover:bg-gold/5;
@@ -130,19 +130,36 @@
            transition-colors duration-500 ease-calm hover:decoration-gold;
   }
 
-  /* Reading measure for long prose. */
   .prose-quiet {
-    @apply max-w-prose font-body text-lead font-light text-ink-onNightSoft;
+    @apply max-w-prose font-body text-lead font-normal text-ink-onNightSoft;
+  }
+
+  /* Reusable publishing-house type roles */
+  .type-hero {
+    @apply font-display font-bold leading-[0.92] tracking-[-0.035em];
+  }
+
+  .type-section {
+    @apply font-display font-semibold leading-[1.04] tracking-[-0.025em];
+  }
+
+  .type-book-title {
+    @apply font-body text-lg font-bold leading-snug;
+  }
+
+  .type-author {
+    @apply font-body text-xs font-bold uppercase tracking-[0.13em];
+  }
+
+  .type-body {
+    @apply font-body text-lg font-normal leading-relaxed;
+  }
+
+  .type-button {
+    @apply font-body text-xs font-bold uppercase tracking-[0.15em];
   }
 }
 
-/* Scroll reveal. The motion is almost imperceptible by design: a slow settle,
-   never a slide, never a bounce.
-
-   The hidden state is scoped to `html.js`, which is set by an inline script in
-   the layout before first paint. With JavaScript disabled the rule never
-   applies, so every section is simply visible — the reveal is an enhancement,
-   never a gate on reading. */
 @layer utilities {
   .reveal {
     transition:
@@ -157,7 +174,6 @@
   }
 }
 
-/* Respect the visitor. If they have asked the system for less motion, they get none. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
