@@ -54,13 +54,13 @@ export default function HomePage() {
               Independent Christian Publishing
             </p>
 
-            <h1 className="mt-6 font-display text-[clamp(3.8rem,7.2vw,7.4rem)] font-bold leading-[0.88] tracking-[-0.035em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+            <h1 className="mt-6 font-display text-[clamp(3.8rem,7.2vw,7.4rem)] font-bold leading-[0.92] tracking-[-0.035em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
               Shazonique&apos;s
               <br />
               Inspiration
             </h1>
 
-            <p className="mt-7 max-w-xl font-display text-[clamp(1.45rem,2.25vw,2.25rem)] font-semibold leading-[1.24] text-white">
+            <p className="mt-7 max-w-xl font-display text-[clamp(1.45rem,2.25vw,2.25rem)] font-semibold leading-[1.28] text-white">
               Books that inspire.
               <br />
               Reflections that restore.
@@ -68,13 +68,9 @@ export default function HomePage() {
               Truth that transforms.
             </p>
 
-            <div className="mt-6 flex items-center gap-3 text-[#dfb238]" aria-hidden="true">
-              <span className="h-px w-20 bg-[#c89a28]" />
-              <span className="text-base">♥</span>
-              <span className="h-px w-20 bg-[#c89a28]" />
-            </div>
+            <div className="mt-7 h-px w-36 bg-[#c89a28]" aria-hidden="true" />
 
-            <p className="mt-6 max-w-xl font-body text-base font-semibold leading-relaxed text-white/90 sm:text-lg">
+            <p className="mt-7 max-w-xl font-body text-base font-normal leading-relaxed text-white/90 sm:text-lg">
               Faith-filled books, reflections, and resources created to encourage
               hearts, strengthen families, and inspire lives of purpose.
             </p>
