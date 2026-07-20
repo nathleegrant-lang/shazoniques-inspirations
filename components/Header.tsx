@@ -5,24 +5,12 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LogoLink } from "@/components/Logo";
 
-/**
- * A lintel, not a toolbar.
- *
- * Warm black on every page: the mark was drawn on black and reads best there, and
- * a dark band top and bottom frames the cream rooms between them the way a gallery
- * frames a wall. The logo never has a contrast problem, on any page.
- *
- * v2.1 — simplified. Nine flat links became six doors. Not one route was removed:
- * every destination in the site is still one or two clicks away, and the grouping
- * itself now says the thing the navigation should say — that this is the shared
- * publishing home of two founding authors, both named, in the menu.
- */
-
 interface NavChild {
   href: string;
   label: string;
   note?: string;
 }
+
 interface NavItem {
   href: string;
   label: string;
@@ -69,9 +57,8 @@ export default function Header() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement | null>(null);
 
-  // Close everything on navigation. Adjusted during render, not in an effect —
-  // see react.dev/learn/you-might-not-need-an-effect.
   const [navigatedFrom, setNavigatedFrom] = useState(pathname);
+
   if (pathname !== navigatedFrom) {
     setNavigatedFrom(pathname);
     setMenuOpen(false);
@@ -80,43 +67,56 @@ export default function Header() {
 
   const isActive = useCallback(
     (item: NavItem) => {
-      const hrefs = [item.href, ...(item.children?.map((c) => c.href) ?? [])].map(
-        (h) => h.split("#")[0],
+      const hrefs = [item.href, ...(item.children?.map((child) => child.href) ?? [])]
+        .map((href) => href.split("#")[0]);
+
+      return hrefs.some(
+        (href) => pathname === href || pathname.startsWith(`${href}/`),
       );
-      return hrefs.some((h) => pathname === h || pathname.startsWith(`${h}/`));
     },
     [pathname],
   );
 
-  // Escape closes the open dropdown; a click anywhere outside does the same.
+  const isChildActive = useCallback(
+    (href: string) => {
+      const cleanHref = href.split("#")[0];
+      return pathname === cleanHref || pathname.startsWith(`${cleanHref}/`);
+    },
+    [pathname],
+  );
+
   useEffect(() => {
     if (!openDrop) return;
 
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenDrop(null);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpenDrop(null);
     };
-    const onClick = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+
+    const onClick = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpenDrop(null);
       }
     };
 
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onClick);
     };
   }, [openDrop]);
 
+  const desktopBase =
+    "inline-flex min-h-10 items-center rounded-full px-4 py-2 font-body text-[0.82rem] font-bold uppercase tracking-[0.12em] transition-all duration-300 ease-calm";
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-night/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-24 max-w-[92rem] items-center gap-8 px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-24 max-w-[92rem] items-center gap-6 px-6 sm:px-8 lg:px-10">
         <LogoLink />
 
-        {/* Desktop */}
         <nav ref={navRef} aria-label="Main" className="ml-auto hidden lg:block">
-          <ul className="flex items-center gap-9">
+          <ul className="flex items-center gap-2 xl:gap-3">
             {NAV.map((item) => {
               const active = isActive(item);
 
@@ -126,8 +126,10 @@ export default function Header() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`font-body text-[0.7rem] uppercase tracking-wide transition-colors duration-500 ease-calm hover:text-gold-soft ${
-                        active ? "text-gold-soft" : "text-ink-onNightSoft"
+                      className={`${desktopBase} ${
+                        active
+                          ? "bg-gold text-night shadow-[0_6px_18px_rgba(178,149,53,0.22)]"
+                          : "text-ink-onNight hover:bg-white/5 hover:text-gold-soft"
                       }`}
                     >
                       {item.label}
@@ -137,6 +139,7 @@ export default function Header() {
               }
 
               const open = openDrop === item.label;
+
               return (
                 <li key={item.label} className="relative">
                   <button
@@ -144,14 +147,18 @@ export default function Header() {
                     onClick={() => setOpenDrop(open ? null : item.label)}
                     aria-expanded={open}
                     aria-haspopup="true"
-                    className={`flex items-center gap-2 font-body text-[0.7rem] uppercase tracking-wide transition-colors duration-500 ease-calm hover:text-gold-soft ${
-                      active || open ? "text-gold-soft" : "text-ink-onNightSoft"
+                    className={`${desktopBase} gap-2 ${
+                      active
+                        ? "bg-gold text-night shadow-[0_6px_18px_rgba(178,149,53,0.22)]"
+                        : open
+                          ? "bg-white/8 text-gold-soft"
+                          : "text-ink-onNight hover:bg-white/5 hover:text-gold-soft"
                     }`}
                   >
                     {item.label}
                     <span
                       aria-hidden
-                      className={`text-[0.5rem] transition-transform duration-500 ease-calm ${
+                      className={`text-[0.6rem] transition-transform duration-300 ${
                         open ? "rotate-180" : ""
                       }`}
                     >
@@ -160,25 +167,45 @@ export default function Header() {
                   </button>
 
                   {open && (
-                    <ul className="absolute left-1/2 top-full z-50 mt-5 w-64 -translate-x-1/2 border border-white/10 bg-night p-2 shadow-lift">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            onClick={() => setOpenDrop(null)}
-                            className="block px-4 py-3 transition-colors duration-500 ease-calm hover:bg-white/5"
-                          >
-                            <span className="block font-display text-lg font-light text-ink-onNight">
-                              {child.label}
-                            </span>
-                            {child.note && (
-                              <span className="lockup mt-1 block text-charcoal-faint">
-                                {child.note}
+                    <ul className="absolute left-1/2 top-full z-50 mt-4 w-72 -translate-x-1/2 overflow-hidden rounded-lg border border-white/10 bg-night p-2 shadow-lift">
+                      {item.children.map((child) => {
+                        const childActive = isChildActive(child.href);
+
+                        return (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setOpenDrop(null)}
+                              aria-current={childActive ? "page" : undefined}
+                              className={`block rounded-md px-5 py-4 transition-colors duration-300 ${
+                                childActive
+                                  ? "bg-gold text-night"
+                                  : "hover:bg-white/5"
+                              }`}
+                            >
+                              <span
+                                className={`block font-display text-xl font-semibold ${
+                                  childActive ? "text-night" : "text-ink-onNight"
+                                }`}
+                              >
+                                {child.label}
                               </span>
-                            )}
-                          </Link>
-                        </li>
-                      ))}
+
+                              {child.note && (
+                                <span
+                                  className={`mt-1 block font-body text-[0.7rem] font-bold uppercase tracking-[0.14em] ${
+                                    childActive
+                                      ? "text-night/70"
+                                      : "text-charcoal-faint"
+                                  }`}
+                                >
+                                  {child.note}
+                                </span>
+                              )}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </li>
@@ -189,25 +216,27 @@ export default function Header() {
 
         <Link
           href="/community"
-          className="hidden items-center rounded-full border border-gold px-6 py-3 font-body text-[0.7rem] uppercase tracking-wide text-gold-soft transition-colors duration-500 ease-calm hover:bg-gold hover:text-night lg:inline-flex"
+          aria-current={pathname.startsWith("/community") ? "page" : undefined}
+          className={`hidden min-h-11 items-center rounded-full border px-6 py-3 font-body text-[0.82rem] font-bold uppercase tracking-[0.12em] transition-all duration-300 ease-calm lg:inline-flex ${
+            pathname.startsWith("/community")
+              ? "border-gold bg-gold text-night shadow-[0_6px_18px_rgba(178,149,53,0.22)]"
+              : "border-gold text-gold-soft hover:bg-gold hover:text-night"
+          }`}
         >
           Community
         </Link>
 
         <button
           type="button"
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
-          className="font-body text-[0.7rem] uppercase tracking-wide text-ink-onNightSoft transition-colors duration-500 ease-calm hover:text-gold-soft lg:hidden"
+          className="ml-auto rounded-full border border-gold/60 px-5 py-3 font-body text-xs font-bold uppercase tracking-[0.14em] text-gold-soft transition-colors duration-300 hover:bg-gold hover:text-night lg:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
       </div>
 
-      {/* Mobile: not a smaller desktop menu. Everything is laid open — no nested
-          taps, no hunting. Each destination gets a full line and room to be tapped
-          without care. */}
       {menuOpen && (
         <nav
           id="mobile-nav"
@@ -215,41 +244,71 @@ export default function Header() {
           className="max-h-[calc(100svh-6rem)] overflow-y-auto border-t border-white/5 bg-night lg:hidden"
         >
           <ul className="mx-auto max-w-site px-6 py-6 sm:px-10">
-            {NAV.map((item) => (
-              <li key={item.label} className="border-b border-white/5 py-5">
-                {item.children ? (
-                  <>
-                    <p className="lockup text-gold/60">{item.label}</p>
-                    <ul className="mt-4 space-y-4">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            className="block font-display text-2xl font-light text-ink-onNight transition-colors duration-500 ease-calm hover:text-gold-soft"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    aria-current={isActive(item) ? "page" : undefined}
-                    className={`block font-display text-2xl font-light transition-colors duration-500 ease-calm ${
-                      isActive(item) ? "text-gold-soft" : "text-ink-onNight"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
+            {NAV.map((item) => {
+              const active = isActive(item);
+
+              return (
+                <li key={item.label} className="border-b border-white/5 py-5">
+                  {item.children ? (
+                    <>
+                      <p
+                        className={`inline-flex rounded-full px-4 py-2 font-body text-xs font-bold uppercase tracking-[0.15em] ${
+                          active
+                            ? "bg-gold text-night"
+                            : "bg-white/5 text-gold-soft"
+                        }`}
+                      >
+                        {item.label}
+                      </p>
+
+                      <ul className="mt-4 space-y-2">
+                        {item.children.map((child) => {
+                          const childActive = isChildActive(child.href);
+
+                          return (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                aria-current={childActive ? "page" : undefined}
+                                className={`block rounded-md px-4 py-3 font-display text-2xl font-semibold transition-colors duration-300 ${
+                                  childActive
+                                    ? "bg-gold text-night"
+                                    : "text-ink-onNight hover:bg-white/5 hover:text-gold-soft"
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`block rounded-md px-4 py-3 font-display text-2xl font-semibold transition-colors duration-300 ${
+                        active
+                          ? "bg-gold text-night"
+                          : "text-ink-onNight hover:bg-white/5 hover:text-gold-soft"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+
             <li className="py-5">
               <Link
                 href="/community"
-                className="block font-display text-2xl font-light text-gold-soft transition-colors duration-500 ease-calm hover:text-gold-light"
+                aria-current={pathname.startsWith("/community") ? "page" : undefined}
+                className={`block rounded-md px-4 py-3 font-display text-2xl font-semibold transition-colors duration-300 ${
+                  pathname.startsWith("/community")
+                    ? "bg-gold text-night"
+                    : "text-gold-soft hover:bg-white/5"
+                }`}
               >
                 Community
               </Link>
