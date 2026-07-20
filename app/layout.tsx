@@ -5,20 +5,16 @@ import { SITE, SOCIAL_CARD } from "@/data/site";
 import "./globals.css";
 
 /**
- * Fraunces for display: a serif with real warmth and optical sizing — a literary
- * home, not a corporate one. Karla for body: a grotesque with enough character
- * to sit beside it without competing.
+ * Shazonique's typography system
  *
- * Loaded as a stylesheet rather than via next/font/google so the project builds
- * in offline/air-gapped environments. Both families are declared in
- * tailwind.config.ts with system serif/sans fallbacks, so the site still reads
- * correctly if the font request is blocked. See README → "Fonts" to switch to
- * next/font/google, which self-hosts the files and removes the extra request.
+ * Playfair Display gives the site the strong, readable editorial serif used in
+ * the approved homepage model. Source Sans 3 keeps paragraphs, navigation,
+ * buttons, book names, and author names clear at smaller sizes.
  */
 const FONT_CSS =
   "https://fonts.googleapis.com/css2" +
-  "?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400" +
-  "&family=Jost:wght@300;400;500" +
+  "?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700" +
+  "&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600" +
   "&display=swap";
 
 export const metadata: Metadata = {
@@ -49,21 +45,9 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [SOCIAL_CARD],
   },
-  // NOTE: no `alternates.canonical` here, on purpose. A canonical set in the
-  // layout is inherited by every page, which would tell search engines that
-  // /books, /authors and /contact are all the same document. Each page declares
-  // its own via lib/seo.ts.
   robots: { index: true, follow: true },
 };
 
-/**
- * Site-wide structured data.
- *
- * Organization and WebSite are declared once, here, and given stable @ids. Every
- * other schema on the site (Person on author pages, Book on book pages,
- * Quotation on reflections) references those @ids rather than restating them —
- * so the graph joins up and nothing is duplicated.
- */
 const siteSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -79,8 +63,6 @@ const siteSchema = {
         url: `${SITE.url}/images/brand/logo-on-black.png`,
       },
       image: `${SITE.url}${SOCIAL_CARD}`,
-      // Verified from the authors' own pages. Nothing beyond that is claimed:
-      // no founding date, no address, no telephone — none of it is in the data.
       founder: [
         {
           "@type": "Person",
@@ -125,9 +107,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
-        {/* Marks the document as JavaScript-capable before first paint, so the
-            scroll reveal can hide sections without ever hiding them from a
-            visitor whose JavaScript is off. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `document.documentElement.classList.add('js')`,
