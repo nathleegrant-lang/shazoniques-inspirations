@@ -15,36 +15,37 @@ const EXPLORE = [
   { href: "/contact", label: "Contact" },
 ];
 
-/**
- * The way out is quiet.
- *
- * The last thing a visitor sees is the mark and the reason the house exists —
- * not a wall of links shouting for one more click. The links are there, small and
- * calm, for anyone who wants them.
- */
+const footerLinkClass =
+  "font-body text-base font-semibold leading-relaxed text-ink-onNight transition-colors duration-300 ease-calm hover:text-gold-soft";
+
+const footerHeadingClass =
+  "font-body text-sm font-extrabold uppercase tracking-[0.2em] text-gold-soft";
+
 export default function Footer() {
   return (
-    <footer className="bg-night text-ink-onNightSoft">
-      <div className="mx-auto max-w-site px-6 py-24 sm:px-10">
-        {/* The mark, once more, with room around it. */}
+    <footer className="border-t border-gold/20 bg-night text-ink-onNight">
+      <div className="mx-auto max-w-[92rem] px-6 pb-10 pt-20 sm:px-10 lg:pt-24">
         <div className="flex flex-col items-center text-center">
           <Logo size="sm" />
-          <p className="mt-8 max-w-md font-display text-xl font-light leading-relaxed text-ink-onNight">
-            Words can heal. Stories can restore. One reflection can change a day.
+
+          <p className="mt-8 max-w-2xl font-display text-[clamp(1.65rem,2.5vw,2.35rem)] font-semibold leading-[1.35] text-white">
+            Words can heal. Stories can restore.
+            <br className="hidden sm:block" />
+            One reflection can change a day.
           </p>
-          <div className="mt-8 h-px w-16 bg-gold/30" />
+
+          <div className="mt-9 h-px w-24 bg-gold/75" aria-hidden="true" />
         </div>
 
-        <div className="mt-20 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-x-12 gap-y-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-16">
           <nav aria-label="Explore">
-            <h2 className="lockup text-gold/70">Explore</h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className={footerHeadingClass}>Explore</h2>
+            <div className="mt-4 h-px w-10 bg-gold/65" aria-hidden="true" />
+
+            <ul className="mt-7 space-y-3">
               {EXPLORE.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="font-body text-sm font-light link-quiet hover:text-gold-soft"
-                  >
+                  <Link href={item.href} className={footerLinkClass}>
                     {item.label}
                   </Link>
                 </li>
@@ -53,15 +54,17 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Authors">
-            <h2 className="lockup text-gold/70">Authors</h2>
-            <ul className="mt-6 space-y-3">
-              {authors.map((a) => (
-                <li key={a.slug}>
+            <h2 className={footerHeadingClass}>Authors</h2>
+            <div className="mt-4 h-px w-10 bg-gold/65" aria-hidden="true" />
+
+            <ul className="mt-7 space-y-4">
+              {authors.map((author) => (
+                <li key={author.slug}>
                   <Link
-                    href={`/authors/${a.slug}`}
-                    className="font-body text-sm font-light link-quiet hover:text-gold-soft"
+                    href={`/authors/${author.slug}`}
+                    className={footerLinkClass}
                   >
-                    {a.name}
+                    {author.name}
                   </Link>
                 </li>
               ))}
@@ -69,24 +72,27 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Elsewhere">
-            <h2 className="lockup text-gold/70">Elsewhere</h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className={footerHeadingClass}>Elsewhere</h2>
+            <div className="mt-4 h-px w-10 bg-gold/65" aria-hidden="true" />
+
+            <ul className="mt-7 space-y-4">
               <li>
                 <a
                   href={EXTERNAL.devotionsSite}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-sm font-light link-quiet hover:text-gold-soft"
+                  className={footerLinkClass}
                 >
                   Family Devotions
                 </a>
               </li>
+
               <li>
                 <a
                   href={EXTERNAL.legacySite}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-sm font-light link-quiet hover:text-gold-soft"
+                  className={footerLinkClass}
                 >
                   Our earlier site
                 </a>
@@ -95,33 +101,34 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Write to us">
-            <h2 className="lockup text-gold/70">Write to us</h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className={footerHeadingClass}>Write to us</h2>
+            <div className="mt-4 h-px w-10 bg-gold/65" aria-hidden="true" />
+
+            <ul className="mt-7 space-y-4">
               <li>
                 <a
                   href={FORMS.commentToAuthor}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-sm font-light link-quiet hover:text-gold-soft"
+                  className={footerLinkClass}
                 >
                   Comment to an author
                 </a>
               </li>
+
               <li>
                 <a
                   href={FORMS.reviewABook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-sm font-light link-quiet hover:text-gold-soft"
+                  className={footerLinkClass}
                 >
                   Review a book
                 </a>
               </li>
+
               <li>
-                <Link
-                  href="/contact"
-                  className="font-body text-sm font-light link-quiet hover:text-gold-soft"
-                >
+                <Link href="/contact" className={footerLinkClass}>
                   Contact
                 </Link>
               </li>
@@ -129,11 +136,12 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-20 flex flex-col gap-3 border-t border-white/5 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="lockup text-charcoal-faint">
-            {SITE.name} · {SITE.slogan}
+        <div className="mt-20 grid gap-6 border-t border-gold/25 pt-8 text-center sm:grid-cols-2 sm:items-center sm:text-left">
+          <p className="font-body text-sm font-bold uppercase tracking-[0.18em] text-gold-soft sm:text-left">
+            {SITE.slogan}
           </p>
-          <p className="font-body text-xs font-light text-charcoal-faint">
+
+          <p className="font-body text-sm font-semibold text-ink-onNightSoft sm:text-right">
             © {new Date().getFullYear()} {SITE.name}. Kingston, Jamaica.
           </p>
         </div>
